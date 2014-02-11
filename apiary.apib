@@ -66,7 +66,9 @@ For example: `GET /users/1/contacts?start=20&limit=10&search=John&tag=1&tag=3`
 
 ## Endpoints
 
-### Status [GET]
+### Status [/]
+
+#### Get API status [GET]
 Get the API service status
 
 + Response 200 (application/json)
@@ -74,12 +76,12 @@ Get the API service status
     + Body
 
         { 
-            "status" : "OK", 
+            "status": "OK", 
             "version": 1
         }
 
 
-### Auth
+### Auth [/auth]
 With the exception of creaing an account, you must first auth against the server using the email address 
 and password associated with your account in order to use the API.
 

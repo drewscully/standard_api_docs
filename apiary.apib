@@ -119,8 +119,7 @@ of the API.
                 }
             }
 
-
--- Auth > Forgot --
+### Forgot Password [/auth/forgot]
 Supply the user email in the case of a forgotten/lost password. If the account is found then a password
 reset link will be sent to the user email address.
 
@@ -130,22 +129,22 @@ Parameters:
 Response:
 A successful response will return no content. User should check their email to continue process.
 
-POST /auth/forgot
-> Content-Type: application/json
-{ 
-    "email": "steven.segal@kickass.com" 
-}
-< 200
-< Content-Type: application/json
-{
-    "message": "Check your email"
-}
-+++++
-< 404
-< Content-Type: application/json
-{
-    "error": "The email specified could not be found"
-}
++ Request (application/json)
+    + Body
+            { 
+                "email": "steven.segal@kickass.com" 
+            }
+
++ Response 200 (application/json)
+    + Body
+            {
+                "message": "Check your email"
+            }
++ Response 404 (application/json)
+    + Body
+            {
+                "error": "The email specified could not be found"
+            }
 
 
 -- Auth > Reset --

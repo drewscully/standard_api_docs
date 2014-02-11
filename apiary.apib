@@ -72,6 +72,7 @@ For example: `GET /users/1/contacts?start=20&limit=10&search=John&tag=1&tag=3`
 Get the API service status
 
 + Response 200 (application/json)
+
     + Body
 
             {
@@ -101,15 +102,20 @@ A successful response will contain a token to use in subsequent requests and a h
 of the API.
 
 #### Create auth token [POST]
+
 + Request (application/json)
+
     + Body
+    
             { 
                 "email": "steven.segal@kickass.com", 
                 "password": "imjustthecook" 
             }
 
 + Response 200 (application/json)
+
     + Body
+    
             {
                 "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
                 "_user_id" : 1,
@@ -129,19 +135,27 @@ Parameters:
 Response:
 A successful response will return no content. User should check their email to continue process.
 
+#### Forgotten Password Request [POST]
 + Request (application/json)
+
     + Body
+    
             { 
                 "email": "steven.segal@kickass.com" 
             }
 
 + Response 200 (application/json)
+
     + Body
+    
             {
                 "message": "Check your email"
             }
+            
 + Response 404 (application/json)
+
     + Body
+    
             {
                 "error": "The email specified could not be found"
             }

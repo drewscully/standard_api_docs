@@ -66,9 +66,9 @@ For example: `GET /users/1/contacts?start=20&limit=10&search=John&tag=1&tag=3`
 
 ## Endpoints
 
-### Group Status [/]
+### Status [/]
 
-#### Get API status [GET]
+#### Get Status [GET]
 Get the API service status
 
 + Response 200 (application/json)
@@ -80,8 +80,7 @@ Get the API service status
             "version": 1
         }
 
-
-### Group Auth [/auth]
+### Auth [/auth]
 With the exception of creaing an account, you must first auth against the server using the email address 
 and password associated with your account in order to use the API.
 
@@ -102,6 +101,7 @@ Response:
 A successful response will contain a token to use in subsequent requests and a hypermedia link to the root and the user's self
 of the API.
 
+#### Create auth token [POST]
 + Request (application/json)
 
     + Body

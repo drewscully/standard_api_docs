@@ -79,13 +79,13 @@ Get the API service status
         }
 
 
-### Auth --
+### Auth
 With the exception of creaing an account, you must first auth against the server using the email address 
 and password associated with your account in order to use the API.
 
 Steps to authenticate:
 
-1. `POST` your credentials (email and password) to __/auth__.
+1. `POST` your credentials (email and password) to __/auth__
 2. __/auth__ will resond with a __token__
 3. Pass the token back in subsequent requests in the Authorization Header using Basic 
 authorization, for example:
@@ -100,22 +100,25 @@ Response:
 A successful response will contain a token to use in subsequent requests and a hypermedia link to the root and the user's self
 of the API.
 
-POST /auth
-> Content-Type: application/json
-{ 
-    "email": "steven.segal@kickass.com", 
-    "password": "imjustthecook" 
-}
-< 200
-< Content-Type: application/json
-{ 
-    "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
-    "_user_id" : 1,
-    "_links": {
-        "root": { "href": "/" },
-        "self": { "href": "/users/{user_id}" }
-    }
-}
++ Request (application/json)
+
+    + Body
+    
+        { 
+            "email": "steven.segal@kickass.com", 
+            "password": "imjustthecook" 
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+        "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
+        "_user_id" : 1,
+        "_links": {
+            "root": { "href": "/" },
+            "self": { "href": "/users/{user_id}" }
+        }
 
 
 -- Auth > Forgot --

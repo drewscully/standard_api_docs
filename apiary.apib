@@ -72,13 +72,12 @@ For example: `GET /users/1/contacts?start=20&limit=10&search=John&tag=1&tag=3`
 Get the API service status
 
 + Response 200 (application/json)
-
     + Body
 
-        { 
-            "status": "OK", 
-            "version": 1
-        }
+            {
+                "status": "OK", 
+                "version": 1
+            }
 
 ### Auth [/auth]
 With the exception of creaing an account, you must first auth against the server using the email address 
@@ -103,24 +102,22 @@ of the API.
 
 #### Create auth token [POST]
 + Request (application/json)
-
     + Body
-    
-        { 
-            "email": "steven.segal@kickass.com", 
-            "password": "imjustthecook" 
-        }
+            { 
+                "email": "steven.segal@kickass.com", 
+                "password": "imjustthecook" 
+            }
 
 + Response 200 (application/json)
-
     + Body
-
-        "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
-        "_user_id" : 1,
-        "_links": {
-            "root": { "href": "/" },
-            "self": { "href": "/users/{user_id}" }
-        }
+            {
+                "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
+                "_user_id" : 1,
+                "_links": {
+                    "root": { "href": "/" },
+                    "self": { "href": "/users/{user_id}" }
+                }
+            }
 
 
 -- Auth > Forgot --

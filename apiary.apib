@@ -262,7 +262,7 @@ A successful response will return no content.
 
 + Response 204
 
-### Group User
+### Group Users
 
 #### User [/users/{id}]
 
@@ -510,7 +510,7 @@ This method accepts a partial representation of a user containing one or more of
             }
 
 
-#### User Collection [/users]
+#### Users Collection [/users]
 
 __Authentication:__ Not required
 
@@ -1414,7 +1414,107 @@ __Authorization:__ Must be owner of the User
 + Response 200
 
 
+#### Group Users > Avatar
 
+##### User Avatar [/users/{id}/avatar]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User 
+
++ Model
+
+    + Headers
+    
+            Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+    
+    + Body
+    
+            {
+                "_links": {
+                    "self": { "href": "/users/1/avatar" },
+                    "crop": { "href": "/users/1/avatar/crop" },
+                    "original": { "href": "https://i.letslynk.com/u/9fkoWokA/a/orig.jpg" },
+                    "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                    "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                    "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                    "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                    "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                    "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                    "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                }
+            }
+            
+##### Get User Avatar [GET]
+
++ Request
+
+    + Headers
+    
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+
++ Response 200 (application/json)
+
+    [User Avatar][]
+
++ Response 404 (application/json)
+
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
+
+##### Update User Avatar [PUT]
+
++ Request (multipart/form-data)
+
+    + Headers
+    
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+    
+    + Body
+    
+            image=<binary data>
+        
++ Response 200 (application/json)
+
+    [User Avatar][]
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The file type is not supported"
+            }
+            
++ Response 400 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The file size is too large (max 10Mb)"
+            }
+
+##### Delete User Avatar [DELETE]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+        
++ Response 204
+
++ Response 404 (application/json)
+
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
 
 
 

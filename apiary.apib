@@ -1515,6 +1515,207 @@ __Authorization:__ Must be owner of the User
             {
                 "error": "The requested resource could not be found"
             }
+            
+            
+##### Crop User Avatar [/users/{id}/avatar/crop]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User
+
+###### Crop User Avatar [POST]
+
+__Required Parameters:__ 
+
+* left (Integer) - _The number of pixels from the left of the image to start the crop_
+* upper (Integer) - _The number of pixels from the top of the image to start the crop_
+* width (Integer) - _The width of the crop area (All avatars are square so width == height)_
+* image_width (String) - _The width of the image used while calculating the above crop dimensionsin pixels_
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
+    + Body
+            
+            {
+                "left": 200,
+                "upper": 50,
+                "width": 300,
+                "image_width": 550
+            }
+            
++ Response 200 (application/json)
+
+    [User Avatar][]
+    
+            
+##### Choose User Avatar [/users/{id}/avatar/choose]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User
+
+###### Choose a User Avatar [POST]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
+    + Body
+            
+            {
+                "avatar_id": 1
+            }
+            
++ Response 200 (application/json)
+
+    [User Avatar][]
+    
+    
+#### Group Users > Banner
+
+##### User Banner [/users/{id}/banner]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User 
+
++ Model
+
+    + Headers
+    
+            Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+    
+    + Body
+    
+            {
+                "_links": {
+                    "self": { "href": "/users/1/banner" },
+                    "crop": { "href": "/users/1/banner/crop" },
+                    "original": { "href": "https://i.letslynk.com/u/9fkoWokA/b/orig.jpg" },
+                    "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                    "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                    "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                    "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                    "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                    "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                    "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                    "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                    "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                }
+            }
+            
+##### Get User Banner [GET]
+
++ Request
+
+    + Headers
+    
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+
++ Response 200 (application/json)
+
+    [User Banner][]
+
++ Response 404 (application/json)
+
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
+
+##### Update User Banner [PUT]
+
++ Request (multipart/form-data)
+
+    + Headers
+    
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+    
+    + Body
+    
+            image=<binary data>
+        
++ Response 200 (application/json)
+
+    [User Avatar][]
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The file type is not supported"
+            }
+            
++ Response 400 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The file size is too large (max 10Mb)"
+            }
+
+##### Delete User Banner [DELETE]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+        
++ Response 204
+
++ Response 404 (application/json)
+
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
+            
+            
+##### Crop User Banner [/users/{id}/banner/crop]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User
+
+###### Crop User Banner [POST]
+
+__Required Parameters:__ 
+
+* left (Integer) - _The number of pixels from the left of the image to start the crop_
+* upper (Integer) - _The number of pixels from the top of the image to start the crop_
+* width (Integer) - _The width of the crop area (All avatars are square so width == height)_
+* image_width (String) - _The width of the image used while calculating the above crop dimensionsin pixels_
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
+    + Body
+            
+            {
+                "left": 200,
+                "upper": 50,
+                "width": 300,
+                "image_width": 550
+            }
+            
++ Response 200 (application/json)
+
+    [User Banner][]
+    
 
 
 

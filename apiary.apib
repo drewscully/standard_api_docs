@@ -2105,6 +2105,26 @@ __Authorization:__ Must be owner of the User
                 "error": "The requested resource could not be found"
             }
 
+##### Delete Contact [DELETE]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+
++ Response 204
+            
++ Response 404 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
+
+
 ##### User Contacts Collections [/users/{user_id}/contacts{?tag*,type,start,limit}]
 
 __Authentication:__ Required
@@ -2176,17 +2196,141 @@ Attributes:
     + Headers
     
             Authorization: Basic {your encoded token}
-            
-    + Body
-    
-            { 
-                "qr_code": "12434-12414-asdsa1-123123",
-                "activity_time": "2013-06-30T12:31:00Z"
-            }
 
 + Response 201 (application/json)
     
-    [User Contact][]
+    + Headers
+    
+            Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+
+    + Body
+    
+            {
+                "contacts": [
+                    {
+                        "user": {
+                            "_contact_id": 10,
+                            "email": "stevensegal@kickass.com",
+                            "title": "Mr",
+                            "first_name": "Steven",
+                            "last_name": "Segal",
+                            "home_telephone": "04444 123 456",
+                            "mobile_telephone": "05555 123 456",
+                            "work_telephone": "06666 123 456",
+                            "linked_in": "http://linked.in/steven_segal",
+                            "facebook": "http://facebook.com/stevan_segal",
+                            "twitter": "@steven_segal",
+                            "google": "+steven_segal",
+                            "company": "Kick Ass Ltd",
+                            "job_title": "Ass Kicker",
+                            "address_line_1": "Address 1",
+                            "address_line_2": "Address 2",
+                            "address_line_3": "Address 3",
+                            "address_line_4": "Address 4",
+                            "locality": "NY",
+                            "region": "NY",
+                            "postcode": "K1KA55",
+                            "country": "USA",
+                            "_qr_code": "12434-12414-asdsa1-123123",
+                            "_links" : {
+                                "avatar": {
+                                    "_links": {
+                                        "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                                        "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                                        "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                                        "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                                        "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                                        "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                                        "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                                    }
+                                },
+                                "banner": {
+                                    "_links": {
+                                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                                    }
+                                },
+                            }
+                        },
+                        "_links": {
+                            "self": { "href": "/users/{user_id}/contacts/{contact_id}" },
+                            "connections": { "href": "/users/{user_id}/contacts/{contact_id}/connections" },
+                            "assigned_tags": { "href": "/users/{user_id}/contacts/{contact_id}/tags" },
+                            "notes": { "href": "/users/{user_id}/contacts/{contact_id}/notes" }
+                        }
+                    },
+                    {
+                        "user": {
+                            "_contact_id": 11,
+                            "email" : "brucelee@kickass.com",
+                            "title" : "Mr",
+                            "first_name" : "Bruce",
+                            "last_name" : "Lee",
+                            "home_telephone" : "04444 123 457",
+                            "mobile_telephone" : "05555 123 457",
+                            "work_telephone" : "06666 123 457",
+                            "linked_in" : "http://linked.in/bruce_lee",
+                            "facebook" : "http://facebook.com/bruce_lee",
+                            "twitter" : "@bruce_lee",
+                            "google" : "+bruce_lee",
+                            "company" : "Kick Ass Ltd",
+                            "job_title" : "Ass Kicker",
+                            "address_line_1" : "Address 1",
+                            "address_line_2" : "Address 2",
+                            "address_line_3" : "Address 3",
+                            "address_line_4" : "Address 4",
+                            "locality" : "NY",
+                            "region" : "NY",
+                            "postcode" : "K1KA55",
+                            "country" : "USA",
+                            "_qr_code": "12434-12414-asdsa1-123142",
+                            "_links" : {
+                                "avatar": {
+                                    "_links": {
+                                        "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                                        "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                                        "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                                        "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                                        "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                                        "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                                        "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                                    }
+                                },
+                                "banner": {
+                                    "_links": {
+                                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                                    }
+                                },
+                            }
+                        },
+                        "_links" : {
+                            "self": { "href": "/users/{user_id}/contacts/{contact_id}" },
+                            "connections": { "href": "/users/{user_id}/contacts/{contact_id}/connections" },
+                            "assigned_tags": { "href": "/users/{user_id}/contacts/{contact_id}/tags" },
+                            "notes": { "href": "/users/{user_id}/contacts/{contact_id}/notes" }
+                        }
+                    }
+                ],
+                "_links": {
+                    "self": { "href": "/users/{user_id}/contacts?start=0&limit=10" },
+                    "next": { "href": "/users/{user_id}/contacts?start=10&limit=10" } 
+                }
+            }
             
 + Response 400 (application/json)
             

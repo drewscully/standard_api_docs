@@ -270,6 +270,35 @@ __Authentication:__ Required
 
 __Authorization:__ Must be the owner of the requested resource
 
+Properties:
+
+* email (string)
+* password (string)
+* title (string)
+* first_name (string)
+* last_name (string)
+* full_name (string)
+* home_telephone (string)
+* mobile_telephone (string)
+* work_telephone (string)there 
+* linked_in (string)
+* facebook (string)
+* twitter (string)
+* google (string)
+* company (string)
+* job_title (string)
+* address\_line_1 (string)
+* address\_line_2 (string)
+* address\_line_3 (string)
+* address\_line_4 (string)
+* locality (string)
+* region (string)
+* postcode (string)
+* country (string)
+* _qr_url (string) _read only_
+* _avatar (string) _read only_
+* _banner (string) _read only_
+
 + Model (application/json)
 
     JSON representation of User Resource
@@ -334,41 +363,11 @@ __Authorization:__ Must be the owner of the requested resource
                     "tags": { "href": "/users/{user_id}/tags" }
                 }
             }
-
-
-Properties:
-
-* email (string)
-* password (string)
-* title (string)
-* first_name (string)
-* last_name (string)
-* full_name (string)
-* home_telephone (string)
-* mobile_telephone (string)
-* work_telephone (string)there 
-* linked_in (string)
-* facebook (string)
-* twitter (string)
-* google (string)
-* company (string)
-* job_title (string)
-* address\_line_1 (string)
-* address\_line_2 (string)
-* address\_line_3 (string)
-* address\_line_4 (string)
-* locality (string)
-* region (string)
-* postcode (string)
-* country (string)
-* _qr_url (string) _read only_
-* _avatar (string) _read only_
-* _banner (string) _read only_
+            
 
 #### Get User [GET]
 
-
-+ Request (application/json)
++ Request
 
     + Headers
     

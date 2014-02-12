@@ -262,7 +262,9 @@ A successful response will return no content.
 
 + Response 204
 
-### User [/users/{id}]
+### Group User
+
+#### User [/users/{id}]
 
 A user of LetsLynk
 
@@ -369,7 +371,7 @@ Properties:
             }
             
 
-#### Get User [GET]
+##### Get User [GET]
 
 + Request
 
@@ -391,7 +393,7 @@ Properties:
             }
             
             
-#### Update User [PUT]
+##### Update User [PUT]
 
 This method accepts a partial representation of a user containing one or more of the optional parameters
 
@@ -508,13 +510,13 @@ This method accepts a partial representation of a user containing one or more of
             }
 
 
-### User Collection [/users]
+#### User Collection [/users]
 
 __Authentication:__ Not required
 
 __Authorization:__ Not required
 
-#### Create a new user [POST]
+##### Create a new user [POST]
 
 + Request (application/json)
 
@@ -645,17 +647,17 @@ __Authorization:__ Not required
                 "error": "The email is already in use"
             }
 
-### Group Social Media Integration
+#### Group Social Media Integration
 
-#### Group Facebook
+##### Group Facebook
 
-##### Facebook oAuth Dialog [/users/{id}/link/facebook/dialog{?redirect_uri}]
+###### Facebook oAuth Dialog [/users/{id}/link/facebook/dialog{?redirect_uri}]
 
 + Parameters
 
     + redirect_uri (required, string) ... URI where Facebook should return response, e.g. https://wwww.letslynk.com/link/facebook
 
-###### Get Facebok oAuth Dialog [GET]
+####### Get Facebok oAuth Dialog [GET]
 
 __Authentication:__ Required
 
@@ -674,11 +676,11 @@ __Authorization:__ Must be the owner of the User
             Location: https://www.facebook.com/dialog/oauth?client_id=1111222233334444&state=Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo&response_type=code&redirect_uri=https://wwww.letslynk.com/link/facebook
   
             
-##### Facebook standard oAuth [/users/{id}/link/facebook/code]
+###### Facebook standard oAuth [/users/{id}/link/facebook/code]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Facebook standard oAuth [POST]
+####### Complete Facebook standard oAuth [POST]
 
 __Authentication:__ Required
 
@@ -724,11 +726,11 @@ __Authorization:__ Must be the owner of the User
             }
      
             
-##### Facebook mobile oAuth [/users/{id}/link/facebook/mobile_auth]
+###### Facebook mobile oAuth [/users/{id}/link/facebook/mobile_auth]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Facebook mobile oAuth [POST]
+####### Complete Facebook mobile oAuth [POST]
 
 __Authentication:__ Required
 
@@ -773,11 +775,11 @@ __Authorization:__ Must be the owner of the User
             }
 
 
-##### Facebook Profile [/users/{id}/link/facebook/profile]
+###### Facebook Profile [/users/{id}/link/facebook/profile]
 
 Get User's Facebook profile
 
-###### Get Facebook Profile [GET]
+####### Get Facebook Profile [GET]
 
 + Request
 
@@ -815,15 +817,15 @@ Get User's Facebook profile
             }
             
             
-#### Group LinkedIn
+##### Group LinkedIn
 
-##### LinkedIn oAuth Dialog [/users/{id}/link/linkedin/dialog{?redirect_uri}]
+###### LinkedIn oAuth Dialog [/users/{id}/link/linkedin/dialog{?redirect_uri}]
 
 + Parameters
 
     + redirect_uri (required, string) ... URI where LinkedIn should return response, e.g. https://wwww.letslynk.com/link/linkedin
 
-###### Get Facebok oAuth Dialog [GET]
+####### Get Facebok oAuth Dialog [GET]
 
 __Authentication:__ Required
 
@@ -842,11 +844,11 @@ __Authorization:__ Must be the owner of the User
             https://www.linkedin.com/uas/oauth2/authorization?client_id=1111222233334444&state=Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo&response_type=code&redirect_uri=https://wwww.letslynk.com/link/linkedin
   
             
-##### Linkedin standard oAuth [/users/{id}/link/linkedin/code]
+###### Linkedin standard oAuth [/users/{id}/link/linkedin/code]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete LinkedIn standard oAuth [POST]
+####### Complete LinkedIn standard oAuth [POST]
 
 __Authentication:__ Required
 
@@ -892,11 +894,11 @@ __Authorization:__ Must be the owner of the User
             }
      
             
-##### LinkedIn mobile oAuth [/users/{id}/link/linkedin/mobile_auth]
+###### LinkedIn mobile oAuth [/users/{id}/link/linkedin/mobile_auth]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete LinkedIn mobile oAuth [POST]
+####### Complete LinkedIn mobile oAuth [POST]
 
 __Authentication:__ Required
 
@@ -941,11 +943,11 @@ __Authorization:__ Must be the owner of the User
             }
 
 
-##### LinkedIn Profile [/users/{id}/link/linkedin/profile]
+###### LinkedIn Profile [/users/{id}/link/linkedin/profile]
 
 Get User's LinkedIn profile
 
-###### Get LinkedIn Profile [GET]
+####### Get LinkedIn Profile [GET]
 
 + Request
 
@@ -983,11 +985,11 @@ Get User's LinkedIn profile
             }
 
 
-#### Group Google+
+##### Group Google+
 
-##### Google+ oAuth Dialog Parameters [/users/{id}/link/google/dialog]
+###### Google+ oAuth Dialog Parameters [/users/{id}/link/google/dialog]
 
-###### Get Google+ oAuth Dialog Parameters [GET]
+####### Get Google+ oAuth Dialog Parameters [GET]
 
 __Authentication:__ Required
 
@@ -1010,11 +1012,11 @@ __Authorization:__ Must be the owner of the User
             }
   
             
-##### Google+ standard oAuth [/users/{id}/link/google/code]
+###### Google+ standard oAuth [/users/{id}/link/google/code]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Google+ standard oAuth [POST]
+####### Complete Google+ standard oAuth [POST]
 
 __Authentication:__ Required
 
@@ -1060,11 +1062,11 @@ __Authorization:__ Must be the owner of the User
             }
      
             
-##### Google+ mobile oAuth [/users/{id}/link/google/mobile_auth]
+###### Google+ mobile oAuth [/users/{id}/link/google/mobile_auth]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Google+ mobile oAuth [POST]
+####### Complete Google+ mobile oAuth [POST]
 
 __Authentication:__ Required
 
@@ -1109,11 +1111,11 @@ __Authorization:__ Must be the owner of the User
             }
 
 
-##### Google+ Profile [/users/{id}/link/google/profile]
+###### Google+ Profile [/users/{id}/link/google/profile]
 
 Get User's Google+ profile
 
-###### Get Google Profile [GET]
+####### Get Google Profile [GET]
 
 + Request
 
@@ -1154,13 +1156,13 @@ Get User's Google+ profile
             
             
             
-#### Group Twitter
+##### Group Twitter
 
-##### Twitter oAuth Dialog [/users/{id}/link/twitter/dialog{?redirect_uri]
+###### Twitter oAuth Dialog [/users/{id}/link/twitter/dialog{?redirect_uri]
 
 + redirect_uri (required, string) ... URI where Facebook should return response, e.g. https://wwww.letslynk.com/link/facebook
 
-###### Get Twitter oAuth Dialog [GET]
+####### Get Twitter oAuth Dialog [GET]
 
 __Authentication:__ Required
 
@@ -1179,11 +1181,11 @@ __Authorization:__ Must be the owner of the User
             Location: https://api.twitter.com/oauth/authenticate?oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik
   
             
-##### Twitter standard oAuth [/users/{id}/link/twitter/code]
+###### Twitter standard oAuth [/users/{id}/link/twitter/code]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Twitter standard oAuth [POST]
+####### Complete Twitter standard oAuth [POST]
 
 __Authentication:__ Required
 
@@ -1232,12 +1234,12 @@ __Authorization:__ Must be the owner of the User
      
      
             
-##### Twitter Request Token [/users/{id}/link/twitter/request_token]
+###### Twitter Request Token [/users/{id}/link/twitter/request_token]
 
 Performs Step 1 of the Twitter Reserve Auth process
 https://dev.twitter.com/docs/ios/using-reverse-auth
 
-###### Twitter Reverse Auth Step [POST]
+####### Twitter Reverse Auth Step [POST]
 
 __Authentication:__ Required
 
@@ -1289,11 +1291,11 @@ __Authorization:__ Must be the owner of the User
                 "error": "The server could not complete your request in time"
             }
             
-##### Twitter Mobile Auth [/users/{id}/link/twitter/mobile_auth]
+###### Twitter Mobile Auth [/users/{id}/link/twitter/mobile_auth]
 
 Submit dialog response parameters for verification and completion of oauth process.
 
-###### Complete Twitter mobile oAuth [POST]
+####### Complete Twitter mobile oAuth [POST]
 
 __Authentication:__ Required
 
@@ -1341,11 +1343,11 @@ __Authorization:__ Must be the owner of the User
             }
 
 
-##### Twitter Profile [/users/{id}/link/google/profile]
+###### Twitter Profile [/users/{id}/link/twitter/profile]
 
 Get User's Twitter profile
 
-###### Get Twitter Profile [GET]
+####### Get Twitter Profile [GET]
 
 + Request
 
@@ -1382,13 +1384,13 @@ Get User's Twitter profile
                 }
             }
             
-#### Push Notification Register [/users/{id}/push_notification_registration]
+##### Push Notification Register [/users/{id}/push_notification_registration]
 
 __Authentication:__ Required
 
 __Authorization:__ Must be owner of the User
 
-##### Register for Push Notifications [PUT]
+###### Register for Push Notifications [PUT]
 
 + Request (application/json)
 
@@ -1405,11 +1407,14 @@ __Authorization:__ Must be owner of the User
             
 + Response 200
 
-##### Deregister for push notifications [DELETE]
+###### Deregister for push notifications [DELETE]
 
 + Request
             
 + Response 200
+
+
+
 
 
 

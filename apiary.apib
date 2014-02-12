@@ -2105,7 +2105,7 @@ __Authorization:__ Must be owner of the User
                 "error": "The requested resource could not be found"
             }
 
-##### User Contacts Collections [/users/{user_id}/contacts]
+##### User Contacts Collections [/users/{user_id}/contacts{?tag*,type,start,limit}]
 
 __Authentication:__ Required
 
@@ -2113,10 +2113,63 @@ __Authorization:__ Must be owner of the User
 
 ##### Create Contact [POST]
 
+Attributes:
+
+* qr_code (required, string) ... the qr code of another user, obtained by scanning a users qr code
+* activity_time (required, string) ... [Format: YYYY-MM-DDTHH:MM:SSZ (RFC 3339)] _the date and time of the connection (specified in UTC)
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            { 
+                "qr_code": "12434-12414-asdsa1-123123",
+                "activity_time": "2013-06-30T12:31:00Z"
+            }
+
++ Response 201 (application/json)
+    
+    [User Contact][]
+            
++ Response 400 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The specified QR code is not in the correct format",
+            }
+
++ Response 400 (application/json)
+            
+    + Body
+    
+            {
+                "error-1": "The required field 'qr_code' was missing in the request",
+                "error-2": "The field 'flibble' is not allowed in this request"
+            }
+
++ Response 404 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The specified QR code was not found",
+            }
+
+
+##### Get Contacts [GET]
+
 + Parameters
 
-    + qr_code (required, string) ... the qr code of another user, obtained by scanning a users qr code
-    + activity_time (required, string) ... [Format: YYYY-MM-DDTHH:MM:SSZ (RFC 3339)] _the date and time of the connection (specified in UTC)
+    + tag (optional, integer) ... filter by tag_id to limit the result set to a set of contacts with a given tag
+    + type (optional, string) ... filter by type, either __all__, __human__ or __goodie__
+    + search (optional, string) ... filter by text search on the full name of the contact
+    + start (optional, integer) ... the item number to start from
+    + limit (optional, integer) ... the maximum number of items to return
 
 + Request (application/json)
 

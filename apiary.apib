@@ -268,7 +268,7 @@ A user of LetsLynk
 
 __Authentication:__ Required
 
-__Authorization:__ Must be the owner of the requested resource
+__Authorization:__ Must be the owner of the User
 
 Properties:
 
@@ -644,4 +644,779 @@ __Authorization:__ Not required
             { 
                 "error": "The email is already in use"
             }
+
+### Group Social Media Integration
+
+#### Group Facebook
+
+##### Facebook oAuth Dialog [/users/{id}/link/facebook/dialog{?redirect_uri}]
+
++ Parameters
+
+    + redirect_uri (required, string) ... URI where Facebook should return response, e.g. https://wwww.letslynk.com/link/facebook
+
+###### Get Facebok oAuth Dialog [GET]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
++ Response 302
+
+    + Headers
+    
+            Location: https://www.facebook.com/dialog/oauth?client_id=1111222233334444&state=Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo&response_type=code&redirect_uri=https://wwww.letslynk.com/link/facebook
+  
+            
+##### Facebook standard oAuth [/users/{id}/link/facebook/code]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Facebook standard oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "code": "5555666677778888",
+                "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+     
+            
+##### Facebook mobile oAuth [/users/{id}/link/facebook/mobile_auth]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Facebook mobile oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "access_token": "IwDbeiWINrotP3JOd1EGoEY7OmOBd2DyV8lh73mutCM.eyJpdiI6IkdKd3BvWlItcWlWRzIwTGYtUkRUVWcifQ.J6qNtSibMmm0yFe2QNHG46jnIUXef3dV-NnbYqXkfrFABjPrgMPQRUeKHJ3GxX1T3nlU7-4P8FUT6dlfwSwHfNJrheTUZIXdd3AlsSRUiUer5xEdFA9IsGEMn6GyHheH9DSr76IeZcBjl-_s4ub3kg",
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+
+
+##### Facebook Profile [/users/{id}/link/facebook/profile]
+
+Get User's Facebook profile
+
+###### Get Facebook Profile [GET]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "title": "Mr",
+                "first_name": "Steven",
+                "last_name": "Segal",
+                "facebook": "http://facebook.com/stevan_segal"
+                "company": "Kick Ass Ltd",
+                "job_title": "Ass Kicker",
+                "address_line_1": "Address 1",
+                "address_line_2": "Address 2",
+                "address_line_3": "Address 3",
+                "address_line_4": "Address 4",
+                "locality": "NY",
+                "region": "NY",
+                "postcode": "K1KA55",
+                "country": "USA"
+                "_links": {
+                    "avatar": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" }
+                    },
+                    "banner": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" }
+                    }
+                }
+            }
+            
+            
+#### Group LinkedIn
+
+##### LinkedIn oAuth Dialog [/users/{id}/link/linkedin/dialog{?redirect_uri}]
+
++ Parameters
+
+    + redirect_uri (required, string) ... URI where LinkedIn should return response, e.g. https://wwww.letslynk.com/link/linkedin
+
+###### Get Facebok oAuth Dialog [GET]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
++ Response 302
+
+    + Headers
+    
+            https://www.linkedin.com/uas/oauth2/authorization?client_id=1111222233334444&state=Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo&response_type=code&redirect_uri=https://wwww.letslynk.com/link/linkedin
+  
+            
+##### Linkedin standard oAuth [/users/{id}/link/linkedin/code]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete LinkedIn standard oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "code": "5555666677778888",
+                "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+     
+            
+##### LinkedIn mobile oAuth [/users/{id}/link/linkedin/mobile_auth]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete LinkedIn mobile oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "code": "IwDbeiWINrotP3JOd1EGoEY7OmOBd2DyV8lh73mutCM.eyJpdiI6IkdKd3BvWlItcWlWRzIwTGYtUkRUVWcifQ.J6qNtSibMmm0yFe2QNHG46jnIUXef3dV-NnbYqXkfrFABjPrgMPQRUeKHJ3GxX1T3nlU7-4P8FUT6dlfwSwHfNJrheTUZIXdd3AlsSRUiUer5xEdFA9IsGEMn6GyHheH9DSr76IeZcBjl-_s4ub3kg",
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+
+
+##### LinkedIn Profile [/users/{id}/link/linkedin/profile]
+
+Get User's LinkedIn profile
+
+###### Get LinkedIn Profile [GET]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "title": "Mr",
+                "first_name": "Steven",
+                "last_name": "Segal",
+                "facebook": "http://facebook.com/stevan_segal"
+                "company": "Kick Ass Ltd",
+                "job_title": "Ass Kicker",
+                "address_line_1": "Address 1",
+                "address_line_2": "Address 2",
+                "address_line_3": "Address 3",
+                "address_line_4": "Address 4",
+                "locality": "NY",
+                "region": "NY",
+                "postcode": "K1KA55",
+                "country": "USA"
+                "_links": {
+                    "avatar": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" }
+                    },
+                    "banner": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" }
+                    }
+                }
+            }
+
+
+#### Group Google+
+
+##### Google+ oAuth Dialog Parameters [/users/{id}/link/google/dialog]
+
+###### Get Google+ oAuth Dialog Parameters [GET]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "client_id": "5555666677778888",
+                "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo",
+                "application_name": "LetsLynk"
+            }
+  
+            
+##### Google+ standard oAuth [/users/{id}/link/google/code]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Google+ standard oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "code": "5555666677778888",
+                "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+     
+            
+##### Google+ mobile oAuth [/users/{id}/link/google/mobile_auth]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Google+ mobile oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "code": "IwDbeiWINrotP3JOd1EGoEY7OmOBd2DyV8lh73mutCM.eyJpdiI6IkdKd3BvWlItcWlWRzIwTGYtUkRUVWcifQ.J6qNtSibMmm0yFe2QNHG46jnIUXef3dV-NnbYqXkfrFABjPrgMPQRUeKHJ3GxX1T3nlU7-4P8FUT6dlfwSwHfNJrheTUZIXdd3AlsSRUiUer5xEdFA9IsGEMn6GyHheH9DSr76IeZcBjl-_s4ub3kg",
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+
+
+##### Google+ Profile [/users/{id}/link/google/profile]
+
+Get User's Google+ profile
+
+###### Get Google Profile [GET]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "title": "Mr",
+                "first_name": "Steven",
+                "last_name": "Segal",
+                "facebook": "http://facebook.com/stevan_segal"
+                "company": "Kick Ass Ltd",
+                "job_title": "Ass Kicker",
+                "address_line_1": "Address 1",
+                "address_line_2": "Address 2",
+                "address_line_3": "Address 3",
+                "address_line_4": "Address 4",
+                "locality": "NY",
+                "region": "NY",
+                "postcode": "K1KA55",
+                "country": "USA"
+                "_links": {
+                    "avatar": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" }
+                    },
+                    "banner": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" }
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+#### Group Twitter
+
+##### Twitter oAuth Dialog [/users/{id}/link/twitter/dialog{?redirect_uri]
+
++ redirect_uri (required, string) ... URI where Facebook should return response, e.g. https://wwww.letslynk.com/link/facebook
+
+###### Get Twitter oAuth Dialog [GET]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+
++ Response 302 (application/json)
+
+    + Headers
+    
+            Location: https://api.twitter.com/oauth/authenticate?oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik
+  
+            
+##### Twitter standard oAuth [/users/{id}/link/twitter/code]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Twitter standard oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "oauth_token": "5555666677778888",
+                "oauth_verifier": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+     
+     
+     
+     
+            
+##### Twitter Request Token [/users/{id}/link/twitter/request_token]
+
+Performs Step 1 of the Twitter Reserve Auth process
+https://dev.twitter.com/docs/ios/using-reverse-auth
+
+###### Twitter Reverse Auth Step [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request
+
++ Response 200 (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "auth_params": "oauth_nonce=\"xq2maKtilFhVTC1MSxVC4cQIJLd53O6w97YmrdOGSk8\",
+                                oauth_signature_method=\"HMAC-SHA1\",
+                                oauth_timestamp=\"1322697052\",
+                                oauth_consumer_key=\"JP3PyvG67rXRsnayOJOcQ\",
+                                oauth_token=\"5mgkU82W0PTA0DLgSIA5vFK6c08i8dXzrbLnX06vl38\",
+                                oauth_signature=\"aOM%2FwW2kAowAeHBRvw7faH245p0%3D\",
+                                oauth_version=\"1.0\""
+            }
+
+
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+            
+##### Twitter Mobile Auth [/users/{id}/link/twitter/mobile_auth]
+
+Submit dialog response parameters for verification and completion of oauth process.
+
+###### Complete Twitter mobile oAuth [POST]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be the owner of the User
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "oauth_token": "2311112785-EXKeLV5ezo3HHIaIf1T3ffeww0mR5dfYXKZjjRy0",
+                "oauth_token_secret": "KYxxxxx3U4Fxrxva3BGD92--12ehEzFwQ",
+                "user_id": 38895958,
+                "screen_name": "theseancook"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was not valid"
+            }
+            
++ Response 403 (application/json)
+
+    + Body
+    
+            {
+                "error": "The request was denied"
+            }
+            
++ Response 504 (application/json)
+
+    + Body
+    
+            {
+                "error": "The server could not complete your request in time"
+            }
+
+
+##### Twitter Profile [/users/{id}/link/google/profile]
+
+Get User's Twitter profile
+
+###### Get Twitter Profile [GET]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "title": "Mr",
+                "first_name": "Steven",
+                "last_name": "Segal",
+                "facebook": "http://facebook.com/stevan_segal"
+                "company": "Kick Ass Ltd",
+                "job_title": "Ass Kicker",
+                "address_line_1": "Address 1",
+                "address_line_2": "Address 2",
+                "address_line_3": "Address 3",
+                "address_line_4": "Address 4",
+                "locality": "NY",
+                "region": "NY",
+                "postcode": "K1KA55",
+                "country": "USA"
+                "_links": {
+                    "avatar": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" }
+                    },
+                    "banner": {
+                        "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" }
+                    }
+                }
+            }
+            
+#### Push Notification Register [/users/{id}/push_notification_registration]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User
+
+##### Register for Push Notifications [PUT]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            
+    + Body
+    
+            {
+                "platform": "ios",
+                "token": "3C6EF372FE95"
+            }
+            
++ Response 200
+
+##### Deregister for push notifications [DELETE]
+
++ Request
+            
++ Response 200
+
+
+
+
+
+
+
+
+
 

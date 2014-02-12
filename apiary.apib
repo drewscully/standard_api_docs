@@ -2084,7 +2084,7 @@ __Authorization:__ Must be owner of the User
             }
 
 
-##### Get Contact [GET]
+##### Get User Contact [GET]
 
 + Request
 
@@ -2105,7 +2105,7 @@ __Authorization:__ Must be owner of the User
                 "error": "The requested resource could not be found"
             }
 
-##### Delete Contact [DELETE]
+##### Delete User Contact [DELETE]
 
 + Request
 
@@ -2125,13 +2125,13 @@ __Authorization:__ Must be owner of the User
             }
 
 
-##### User Contacts Collections [/users/{user_id}/contacts{?tag*,type,start,limit}]
+##### User Contacts Collections [/users/{user_id}/contacts{?tag*,type,start,limit,search}]
 
 __Authentication:__ Required
 
 __Authorization:__ Must be owner of the User 
 
-##### Create Contact [POST]
+##### Create User Contact [POST]
 
 Attributes:
 
@@ -2181,7 +2181,7 @@ Attributes:
             }
 
 
-##### Get Contacts [GET]
+##### Get User Contacts [GET]
 
 + Parameters
 
@@ -2331,46 +2331,153 @@ Attributes:
                     "next": { "href": "/users/{user_id}/contacts?start=10&limit=10" } 
                 }
             }
-            
-+ Response 400 (application/json)
-            
-    + Body
-    
-            {
-                "error": "The specified QR code is not in the correct format",
-            }
-
-+ Response 400 (application/json)
-            
-    + Body
-    
-            {
-                "error-1": "The required field 'qr_code' was missing in the request",
-                "error-2": "The field 'flibble' is not allowed in this request"
-            }
 
 + Response 404 (application/json)
             
     + Body
     
             {
-                "error": "The specified QR code was not found",
+                "error": "The resource could not be found",
             }
 
 
 
+##### Contacts List [/users/{user_id}/contacts{?tag*,type,start,limit,search}]
 
+__Authentication:__ Required
 
+__Authorization:__ Must be owner of the User 
 
+##### Get Contacts List [GET]
 
++ Parameters
 
+    + tag (optional, integer) ... filter by tag_id to limit the result set to a set of contacts with a given tag
+    + type (optional, string) ... filter by type, either __all__, __human__ or __goodie__
+    + search (optional, string) ... filter by text search on the full name of the contact
+    + start (optional, integer) ... the item number to start from
+    + limit (optional, integer) ... the maximum number of items to return
 
++ Request (application/json)
 
+    + Headers
+    
+            Authorization: Basic {your encoded token}
 
++ Response 200 (application/json)
+    
+    + Headers
+    
+            Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 
-
-
-
+    + Body
+    
+            {
+                "contact_list": [
+                    {
+                        "user": {
+                            "email" : "stevensegal@kickass.com",
+                            "title" : "Mr",
+                            "first_name" : "Steven",
+                            "last_name" : "Segal",
+                            "home_telephone" : "04444 123 456",
+                            "mobile_telephone" : "05555 123 456",
+                            "work_telephone" : "06666 123 456",
+                            "company" : "Kick Ass Ltd",
+                            "job_title" : "Ass Kicker",
+                            "_links": {
+                                "avatar": {
+                                    "_links": {
+                                        "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                                        "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                                        "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                                        "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                                        "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                                        "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                                        "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                                    }
+                                }
+                            }
+                        },
+                        "assigned_tags": [
+                            {
+                                "tag": {
+                                    "name": "Hot Lead",
+                                    "colour": "F47831",
+                                    "icon": "flame"
+                                }
+                            },
+                            {
+                                "tag": {
+                                    "name": "Call Back",
+                                    "colour": "47B569",
+                                    "icon": "phone"
+                                }
+                            }
+                        ],
+                        "_links" : {
+                            "contact": { "href": "/users/{user_id}/contacts/{contact_id}" }
+                        }
+                    },
+                    {
+                        "user": {
+                            "email" : "brucelee@kickass.com",
+                            "title" : "Mr",
+                            "first_name" : "Bruce",
+                            "last_name" : "Lee",
+                            "home_telephone" : "04444 123 457",
+                            "mobile_telephone" : "05555 123 457",
+                            "work_telephone" : "06666 123 457",
+                            "company" : "Kick Ass Ltd",
+                            "job_title" : "Ass Kicker",
+                            "_links": {
+                                "avatar": {
+                                    "_links": {
+                                        "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                                        "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                                        "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                                        "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                                        "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                                        "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                                        "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                                    }
+                                }
+                            }
+                        },
+                        "assigned_tags": [
+                            {
+                                "tag": {
+                                    "name": "Hot Lead",
+                                    "colour": "F47831",
+                                    "icon": "flame"
+                                }
+                            },
+                            {
+                                "tag": {
+                                    "name": "Call Back",
+                                    "colour": "47B569",
+                                    "icon": "phone"
+                                }
+                            }
+                        ],
+                        "_links" : {
+                            "contact": { "href": "/users/{user_id}/contacts/{contact_id}" }
+                        }
+                    }
+                ],
+                "_links": {
+                    "self": { "href": "/users/{user_id}/contact_list?start=0&limit=10" },
+                    "next": { "href": "/users/{user_id}/contact_list?start=10&limit=10" } 
+                }
+            }
+            
++ Response 404 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The resource could not be found",
+            }
 
 
 #### Group User > Contacts > Connections

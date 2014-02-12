@@ -1724,5 +1724,294 @@ __Required Parameters:__
 
 
 
+#### Group Users > Activity
+
+##### User Activity [/users/{id}/activity{?start,limit,type]
+
+__Authentication:__ Required
+
+__Authorization:__ Must be owner of the User 
+
++ Parameters
+
+    + start (optional, integer) ... the item number to start from. If not specified, start will be set to 0
+    + limit (optional, integer) ... the maximum number of items to return. If not specified, limit will be set to 10
+    + type (optional, string) ... allowed values are __all__, __connections__, __goodies__,  __events__ and __collected-goodie__. If the type is not set, it will default to __all__.
+
+##### Get User Activity [GET]
+
++ Request
+
+    + Headers
+    
+            Authorization: Basic {your encoded token}
+            If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+
++ Response 200 (application/json)
+
+    + Headers
+    
+            Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+            
+    + Body
+    
+            {
+                "activity": [
+                    {
+                        "type": "connection",
+                        "date": "2013-06-30T12:39:00Z",
+                        "event": {
+                            "name": "Event A",
+                            "_links": {
+                                "event": { "href": "/events/{event_id}" }
+                            }
+                        },
+                        "contact": {
+                            "user": {
+                                "first_name": "Jean Claude",
+                                "last_name": "Van Damme",
+                                "company": "Round House Inc.",
+                                "job_title": "CEO",
+                                "_links": {
+                                    "avatar": {
+                                        "ldpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" },
+                                        "mdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/mdpi.jpg" },
+                                        "hdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/hdpi.jpg" },
+                                        "xhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/xhdpi.jpg" },
+                                        "xxhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/xxhdpi.jpg" }
+                                    },
+                                    "banner": {
+                                        "ldpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" },
+                                        "mdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/mdpi.jpg" },
+                                        "hdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/hdpi.jpg" },
+                                        "xhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/xhdpi.jpg" },
+                                        "xxhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/xxhdpi.jpg" }
+                                    }
+                                }
+                            },
+                            "assigned_tags": [
+                                {
+                                    "tag": {
+                                        "_tag_id": 1001,
+                                        "name": "Hot Lead",
+                                        "colour": "F47831",
+                                        "icon": "flame",
+                                        "_links": {
+                                            "self": { "href": "/users/{user_id}/tags/{user_tag_id}" }
+                                        }
+                                    },
+                                    "_links": {
+                                        "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                                    }
+                                },
+                                {
+                                    "tag": {
+                                        "_tag_id": 1003,
+                                        "name": "Call Back",
+                                        "colour": "47B569",
+                                        "icon": "phone",
+                                        "_links": {
+                                            "self": { "href": "/users/{user_id}/tags/{user_tag_id}" }
+                                        }
+                                    },
+                                    "_links": {
+                                        "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                                    }
+                                }
+                            ],
+                            "notes": "true",
+                            "_links": {
+                                "self": { "href": "/users/{user_id}/contacts/{contact_id}" } 
+                            }
+                        }
+                    },
+                    {
+                        "type": "goodie",
+                        "date": "2013-06-30T12:38:00Z",
+                        "event": {
+                            "name": "Event A",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "_goodie": {
+                            "name": "Example Goodie - Document",
+                            "team": {
+                                "name": "Company A",
+                                "_links": {
+                                    "self": { "href": "/teams/{team_id}" } 
+                                }
+                            },
+                            "type": "document",
+                            "file-type": "word",
+                            "document": "/users/{user_id}/goodie/{goodie_collection_id}/document"
+                        }
+                    },
+                    {
+                        "type": "goodie",
+                        "date": "2013-06-30T12:37:00Z",
+                        "event": {
+                            "name": "Event A",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "goodie": {
+                            "name": "Example Goodie - Image",
+                            "team": {
+                                "name": "Company B",
+                                "_links": {
+                                    "self": { "href": "/teams/{team_id}" } 
+                                }
+                            },
+                            "type": "image",
+                            "image": {
+                                "banner": "/users/{user_id}/goodie/{goodie_collection_id}/image?size=banner",
+                                "full": "/users/{user_id}/goodie/{goodie_collection_id}/image"
+                            }
+                        }
+                    },
+                    {
+                        "type": "goodie",
+                        "date": "2013-06-30T12:36:00Z",
+                        "goodie": {
+                            "name": "Example Goodie - Video Embedded Player", 
+                            "team": {
+                                "name": "Company C",
+                                "_links": {
+                                    "self": { "href": "/teams/{team_id}" } 
+                                }
+                            },
+                            "type": "video",
+                            "video": {
+                                "type": "embedded-player",
+                                "url": "http://www.youtube.com/watch?v=SxHVhxbtrhY"
+                            }
+                        }
+                    },
+                    {
+                        "type": "goodie",
+                        "date": "2013-06-30T12:35:00Z",
+                        "goodie": {
+                            "name": "Example Goodie - Video File", 
+                            "team": {
+                                "name": "Company A",
+                                "_links": {
+                                    "self": { "href": "/teams/{team_id}" } 
+                                }
+                            },
+                            "type": "video",
+                            "video": {
+                                "type": "video-file",
+                                "url": "http://www.self-hosted-video.com/video.m4v"
+                            }
+                        }
+                    },
+                    {
+                        "type": "goodie",
+                        "date": "2013-06-30T12:34:00Z",
+                        "event": {
+                            "name": "Event B",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "goodie": {
+                            "name": "Example Goodie - URL", 
+                            "team": {
+                                "name": "Company D",
+                                "_links": {
+                                    "self": { "href": "/teams/{team_id}" } 
+                                }
+                            },
+                            "type": "website",
+                            "url": "http://www.letslynk.com"
+                        }
+                    },
+                    {
+                        "type": "event-attended",
+                        "date": "2013-06-30T12:33:00Z",
+                        "event": {
+                            "name": "Event B",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "attended": {
+                            "name": "Example Event A", 
+                            "banner": "/users/{user_id}/events/{event_id}/banner",
+                            "_links": {
+                                "self": { "href": "/users/{user_id}/events/{event_id}" }
+                            } 
+                        }
+                    },
+                    {
+                        "type": "event-registered",
+                        "date": "2013-06-30T12:32:00Z",
+                        "event": {
+                            "name": "Event B",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "registered": {
+                            "name": "Example Event B", 
+                            "banner": "/users/{user_id}/events/{event_id}/banner",
+                            "_links": {
+                                "self": { "href": "/users/{user_id}/events/{event_id}" }
+                            } 
+                        }
+                    },
+                    {
+                        "type": "collected-goodie",
+                        "date": "2013-06-30T12:31:00Z",
+                        "event": {
+                            "name": "Event B",
+                            "_links": {
+                                "event": { "href": "/users/{user_id}/events/{event_id}" }
+                            }
+                        },
+                        "goodie": {
+                            "name": "Example Goodie - URL", 
+                            "type": "website",
+                            "url": "http://www.letslynk.com",
+                            "_links": {
+                                "self": { "href": "/teams/{team_id}/goodie/{goodie_id}" } 
+                            } 
+                        },
+                        "user": {
+                            "first_name": "Billy",
+                            "last_name": "NoMates",
+                            "company": "Sad Face Ltd.",
+                            "job_title": "CEO",
+                            "avatar": "/users/{user_id}/contacts/{contact_id}/avatar",
+                            "_links": {
+                                "self": { "href": "/users/{user_id}/contacts/{contact_id}" } 
+                            }
+                        }
+                    }
+                ],
+                "_links": {
+                    "parent": { "href": "/users/{user_id}" },
+                    "self": { "href": "/users/{user_id}/activity?start=0&limit=10&type=all" },
+                    "next": { "href": "/users/{user_id}/activity?start=10&limit=10&type=all" }
+                }
+            }
+            
++ Response 404 (application/json)
+            
+    + Body
+    
+            {
+                "error": "The requested resource could not be found"
+            }
+
+
+
+
+
+
+
+
 
 

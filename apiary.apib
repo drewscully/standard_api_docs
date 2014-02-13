@@ -9929,13 +9929,9 @@ __Required parameters:__
 
 * qr_code (string)
 
-POST /qr_lookup
-> Content-Type: application/json
+GET /qr/{qr_code}
 > Authorization: Basic {your encoded token}
-{
-    "qr_code": "12434-12414-asdsa1-123123",
-}
-< 201
+< 200
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {

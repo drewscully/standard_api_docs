@@ -9913,3 +9913,88 @@ POST /door_scanner_auth
     "_event_id": 1,
     "token" : "QkR6cFhHSHpnNkIyMk16bzlGNm1POWNKSTJpT0VSMWo1cnkxaERuUnN0RWdNVWZNcThYR1o4MTduUVRwTWZ4Qjo=", 
 }
+
+
+--
+QR Lookup
+
+Lookup a LetsLynk QR code
+--
+
+__Authentication:__ Required
+
+__Authorization:__ Must be a door scanner
+
+__Required parameters:__ 
+
+* qr_code (string)
+
+POST /qr_lookup
+> Content-Type: application/json
+> Authorization: Basic {your encoded token}
+{
+    "qr_code": "12434-12414-asdsa1-123123",
+}
+< 201
+< Content-Type: application/json
+< Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+{
+    "user": { 
+        "email": "stevensegal@kickass.com",
+        "title": "Mr",
+        "first_name": "Steven",
+        "last_name": "Segal",
+        "home_telephone": "04444 123 456",
+        "mobile_telephone": "05555 123 456",
+        "work_telephone": "06666 123 456",
+        "linked_in": "http://linked.in/steven_segal",
+        "facebook": "http://facebook.com/stevan_segal",
+        "twitter": "@steven_segal",
+        "google": "+steven_segal",
+        "company": "Kick Ass Ltd",
+        "job_title": "Ass Kicker",
+        "address_line_1": "Address 1",
+        "address_line_2": "Address 2",
+        "address_line_3": "Address 3",
+        "address_line_4": "Address 4",
+        "locality": "NY",
+        "region": "NY",
+        "postcode": "K1KA55",
+        "country": "USA",
+        "_qr_url": "https://qr.letslynk.com/u/oO68mZwLTvi7bWu5vTgKEQ/Steven%20Segal",
+        "_links": {
+            "avatar": {
+                "_links": {
+                    "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                    "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                    "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                    "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                    "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                    "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                    "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                }
+            },
+            "banner": {
+                "_links": {
+                    "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                    "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                    "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                    "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                    "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                    "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                    "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                    "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                    "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                }
+            },
+            "self": { "href": "/users/{user_id}" },
+            "activity": { "href": "/users/{user_id}/activity" },
+            "contacts": { "href": "/users/{user_id}/contacts" },
+            "invites": { "href": "/users/{user_id}/invites" },
+            "goodie": { "href": "/users/{user_id}/goodie" },
+            "registrations": { "href": "/users/{user_id}/registrations" },
+            "teams": { "href": "/users/{user_id}/teams" },
+            "tags": { "href": "/users/{user_id}/tags" }
+        }
+    }
+}

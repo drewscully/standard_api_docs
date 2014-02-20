@@ -9916,9 +9916,9 @@ POST /door_scanner_auth
 
 
 --
-QR Lookup
+QR User Lookup
 
-Lookup a LetsLynk QR code
+Lookup a LetsLynk user QR code
 --
 
 __Authentication:__ Required
@@ -9929,12 +9929,19 @@ __Required parameters:__
 
 * qr_code (string)
 
-GET /qr/{qr_code}
+GET /qr/user/{qr_code}
 > Authorization: Basic {your encoded token}
 < 200
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "registration_date": "2013-06-30T13:01:12Z",
+    "registration_form": {
+        "questions": [
+            "1": 12,
+            "2": 24
+        ]
+    },
     "user": { 
         "email": "stevensegal@kickass.com",
         "title": "Mr",

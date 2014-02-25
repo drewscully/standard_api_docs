@@ -3836,7 +3836,12 @@ Retrieve a collection of team activities
 
 __Authentication:__ Required
 
-__Authorization:__ The caller must be authorized as the owner of the user resource 
+__Authorization:__ The caller must be a member of the teams
+
+__Notes__:
+
+Team owners and admins will have the complete team activity returned.
+Team members will have only their own generated team activity returned.
 
 __URI Filters__: 
 

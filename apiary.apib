@@ -3762,8 +3762,8 @@ __Optional parameters:__
 
 If the user opts to update to a pro team account, they will also need to provide the following credit card information:
 
-* team\_name (String) _the name of the team_
-* team\_type (String) *the type of team, valid options are __standard__ and __pro__*
+* name (String) _the name of the team_
+* type (String) *the type of team, valid options are __basic__ and __pro__*
 * credit_card (see format below): 
 
 
@@ -8830,7 +8830,7 @@ GET /events/{event_id}/teams{?start,limit,order}
         {
             "_team_id": 1,
             "name": "Lets Lynk Ltd",
-            "type": "standard",
+            "type": "basic",
             "owner": {
                 "user": {
                     "name": "Bruce Lee"
@@ -8840,7 +8840,7 @@ GET /events/{event_id}/teams{?start,limit,order}
         {
             "_team_id": 2,
             "name": "Bodswap",
-            "type": "standard",
+            "type": "basic",
             "owner": {
                 "user": {
                     "name": "Jamie Vaughan"

@@ -2895,11 +2895,13 @@ GET /users/{user_id}/invites{?type,start,limit,order}
             "_invite_id": 1,
             "type": "team_join",
             "status": "pending",
+            "level": "member"
             "team": {
-                "name": "Kung Fu Masters",
-                "": "member"
+                "_team_id": 1,
+                "name": "Kung Fu Masters"
             },
             "event": {
+                "_event_id": 1,
                 "name": "The Kung Fu Show",
                 "_links": {
                     "event": { "href": "/users/{user_id}/events/{event_id}" }

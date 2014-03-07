@@ -8769,7 +8769,7 @@ __Authorization:__ The user must be an admin or owner of the event they are requ
 
 __Required parameters:__
 
-* email\_address (String) *the email address of the person you wish to invite*
+* email (String) *the email address of the person you wish to invite*
 * level (String) *the user level that the invitee will have when joining the team. Accepted values are __admin__ or __member__*
 
 __Optional paramters:__
@@ -8780,16 +8780,16 @@ POST /events/{event_id}/staff_invites
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
 {
-    "email_address": "jet.lee@kickass.com",
-    "type": "member",
+    "email": "jet.lee@kickass.com",
+    "level": "member",
     "message": "Hi Jet, I'm organizing the Kick Ass Kung Fu event, join my team so we can work together!"
 }
 < 201
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "email_address": "jet.lee@kickass.com",
-    "type": "member",
+    "email": "jet.lee@kickass.com",
+    "level": "member",
     "message": "Hi Jet, I'm organizing the Kick Ass Kung Fu event, join my team so we can work together!",
     "status": "pending",
     "_links":{
@@ -8822,8 +8822,8 @@ GET /events/{event_id}/staff_invites{?start,limit,status*,type*}
     "staff_invites": [
         {
             "name": "Jet Lee",
-            "email_address": "jet.lee@kickass.com",
-            "type": "member",
+            "email": "jet.lee@kickass.com",
+            "level": "member",
             "message": "Hi Jet, I'm organizing the Kick Ass Kung Fu event, join my team so we can work together!",
             "status": "pending",
             "_links": {
@@ -8832,8 +8832,8 @@ GET /events/{event_id}/staff_invites{?start,limit,status*,type*}
         },  
         {
             "name": "Bruce Willis",
-            "email_address": "bruce.willis@kickass.com",
-            "type": "member",
+            "email": "bruce.willis@kickass.com",
+            "level": "member",
             "message": "Hi Bruce, I'm organizing the Kick Ass Kung Fu event, join my team so we can work together!",
             "status": "pending",
             "_links": {
@@ -8862,8 +8862,8 @@ GET /events/{event_id}/staff_invites/{staff_invite_id}
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "name": "Jet Lee",
-    "email_address": "jet.lee@kickass.com",
-    "type": "member",
+    "email": "jet.lee@kickass.com",
+    "level": "member",
     "message": "Hi Jet, I'm organizing the Kick Ass Kung Fu event, join my team so we can work together!",
     "status": "pending",
     "_links":{

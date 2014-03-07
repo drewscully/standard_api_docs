@@ -6390,15 +6390,14 @@ POST /events/{event_id}/attendances
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "date": "2013-06-30T13:21:55Z",
+    "registration_date": "2013-06-30T13:21:55Z",
     "user": {
         "first_name": "Forrest",
         "last_name": "Griffin",
         "email": "forest-griffin@cagefighter.com"
     },
     "_links":{
-        "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" },
-        "door": { "href" : "/events/{event_id}/doors/{door_id}" }
+        "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" }
     }
 }
 

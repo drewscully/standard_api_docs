@@ -9416,7 +9416,7 @@ GET /events/{event_id}/stats/connection/combo{?day}
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "total": 282,
-    "average": 4.2,
+    "visitor_average": 4.2,
     "per_hour": {
         "09:00": 30,
         "10:00": 37,
@@ -9428,29 +9428,27 @@ GET /events/{event_id}/stats/connection/combo{?day}
         "16:00": 9,
         "17:00": 4
     },
-    "table": {
-        "average": 8,
-        "teams": {
-            "Bodswap": {
-                "connections": 16,
-                "change": 100
-            },
-            "IBM": {
-                "connections": 12,
-                "change": 50
-            },
-            "Microsoft": {
-                "connections": 8,
-                "change": 0
-            },
-            "Samsung": {
-                "connections": 4,
-                "change": -50
-            },
-            "Sony": {
-                "connections": 2,
-                "change": -75
-            }
+    "team_average": 8,
+    "teams": {
+        "Bodswap": {
+            "connections": 16,
+            "change": 100
+        },
+        "IBM": {
+            "connections": 12,
+            "change": 50
+        },
+        "Microsoft": {
+            "connections": 8,
+            "change": 0
+        },
+        "Samsung": {
+            "connections": 4,
+            "change": -50
+        },
+        "Sony": {
+            "connections": 2,
+            "change": -75
         }
     }
 }

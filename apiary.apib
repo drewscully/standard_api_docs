@@ -6425,28 +6425,25 @@ GET /events/{event_id}/attendances{start,limit,start_time,end_time,door_id*}
 {
     "attendances": [
         {
-            "date": "2013-06-30T13:21:55Z",
+            "registration_date": "2013-06-30T13:21:55Z",
             "user": {
                 "first_name": "Forrest",
                 "last_name": "Griffin",
                 "email": "forest-griffin@cagefighter.com"
             },
             "_links":{
-                "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" },
-                "door": { "href" : "/events/{event_id}/doors/{door_id}" }
+                "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" }
             }
         },
         {
-            "date": "2013-06-30T14:02:16Z",
+            "registration_date": "2013-06-30T14:02:16Z",
             "user": {
                 "first_name": "John",
                 "last_name": "Jones",
                 "email": "john-jones@cagefighter.com"
             },
             "_links":{
-                "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" },
-                "door": { "href" : "/events/{event_id}/doors/{door_id}" }
-                
+                "self": { "href" : "/events/{event_id}/attendances/{attendance_id}" }
             }
         }
     ],
@@ -6469,7 +6466,7 @@ GET /events/{event_id}/attendances/{attendance_id}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "date": "2013-06-30T13:21:55Z",
+    "registration_date": "2013-06-30T13:21:55Z",
     "user": {
         "first_name": "Forrest",
         "last_name": "Griffin",

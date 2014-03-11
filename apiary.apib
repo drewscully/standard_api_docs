@@ -1687,20 +1687,28 @@ GET /users/{user_id}/activity{?start,limit,type}
                     "last_name": "Van Damme",
                     "company": "Round House Inc.",
                     "job_title": "CEO",
-                    "_links": {
-                        "avatar": {
-                            "ldpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/ldpi.jpg" },
-                            "mdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/mdpi.jpg" },
-                            "hdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/hdpi.jpg" },
-                            "xhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/xhdpi.jpg" },
-                            "xxhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/a/xxhdpi.jpg" }
-                        },
-                        "banner": {
-                            "ldpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/ldpi.jpg" },
-                            "mdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/mdpi.jpg" },
-                            "hdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/hdpi.jpg" },
-                            "xhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/xhdpi.jpg" },
-                            "xxhdpi": { "href": "https://i.letslynk.com/u/9fkoWokA/b/xxhdpi.jpg" }
+                    "avatar": {
+                        "_links": {
+                            "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                            "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                            "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                            "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                            "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                            "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                            "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                        }
+                    },
+                    "banner": {
+                        "_links": {
+                            "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                            "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                            "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                            "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                            "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                            "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                            "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                            "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                            "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
                         }
                     }
                 },
@@ -1749,17 +1757,19 @@ GET /users/{user_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
-            "_goodie": {
-                "name": "Example Goodie - Document",
-                "team": {
+            "team": {
                     "name": "Company A",
                     "_links": {
                         "self": { "href": "/teams/{team_id}" } 
                     }
                 },
+            "goodie": {
+                "name": "Example Goodie - Document",
                 "type": "document",
-                "file-type": "word",
-                "document": "/users/{user_id}/goodie/{goodie_collection_id}/document"
+                "document": {
+                    "type-type": "word",
+                    "url": "/users/{user_id}/goodie/{goodie_collection_id}/document"
+                }
             }
         },
         {
@@ -1771,35 +1781,37 @@ GET /users/{user_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
+            "team": {
+                "name": "Company B",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Image",
-                "team": {
-                    "name": "Company B",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "image",
                 "image": {
-                    "banner": "/users/{user_id}/goodie/{goodie_collection_id}/image?size=banner",
-                    "full": "/users/{user_id}/goodie/{goodie_collection_id}/image"
+                    "_links": {
+                        "banner": { "href": "/users/{user_id}/goodie/{goodie_collection_id}/image?size=banner" },
+                        "full": { "href": "/users/{user_id}/goodie/{goodie_collection_id}/image" }
+                    }
                 }
             }
         },
         {
             "type": "goodie",
             "date": "2013-06-30T12:36:00Z",
+            "team": {
+                "name": "Company C",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Video Embedded Player", 
-                "team": {
-                    "name": "Company C",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "video",
                 "video": {
-                    "type": "embedded-player",
+                    "type": "embedded",
                     "url": "http://www.youtube.com/watch?v=SxHVhxbtrhY"
                 }
             }
@@ -1807,17 +1819,17 @@ GET /users/{user_id}/activity{?start,limit,type}
         {
             "type": "goodie",
             "date": "2013-06-30T12:35:00Z",
+            "team": {
+                "name": "Company A",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Video File", 
-                "team": {
-                    "name": "Company A",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "video",
                 "video": {
-                    "type": "video-file",
+                    "type": "file",
                     "url": "http://www.self-hosted-video.com/video.m4v"
                 }
             }
@@ -1831,16 +1843,18 @@ GET /users/{user_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
+            "team": {
+                "name": "Company D",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
-                "name": "Example Goodie - URL", 
-                "team": {
-                    "name": "Company D",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
+                "name": "Example Goodie - URL",
                 "type": "website",
-                "url": "http://www.letslynk.com"
+                "website": {
+                    "url": "http://www.letslynk.com"    
+                }
             }
         },
         {
@@ -1848,16 +1862,22 @@ GET /users/{user_id}/activity{?start,limit,type}
             "date": "2013-06-30T12:33:00Z",
             "event": {
                 "name": "Event B",
+                "banner": {
+                    "_links": {
+                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                    }
+                },
                 "_links": {
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
-            },
-            "attended": {
-                "name": "Example Event A", 
-                "banner": "/users/{user_id}/events/{event_id}/banner",
-                "_links": {
-                    "self": { "href": "/users/{user_id}/events/{event_id}" }
-                } 
             }
         },
         {
@@ -1865,16 +1885,22 @@ GET /users/{user_id}/activity{?start,limit,type}
             "date": "2013-06-30T12:32:00Z",
             "event": {
                 "name": "Event B",
+                "banner": {
+                    "_links": {
+                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                    }
+                },
                 "_links": {
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
-            },
-            "registered": {
-                "name": "Example Event B", 
-                "banner": "/users/{user_id}/events/{event_id}/banner",
-                "_links": {
-                    "self": { "href": "/users/{user_id}/events/{event_id}" }
-                } 
             }
         },
         {
@@ -1889,7 +1915,9 @@ GET /users/{user_id}/activity{?start,limit,type}
             "goodie": {
                 "name": "Example Goodie - URL", 
                 "type": "website",
-                "url": "http://www.letslynk.com",
+                "website": {
+                    "url": "http://www.letslynk.com"    
+                }
                 "_links": {
                     "self": { "href": "/teams/{team_id}/goodie/{goodie_id}" } 
                 } 
@@ -3808,7 +3836,7 @@ PUT /teams/{team_id}
             "self": { "href": "/events/{event_id}" }
         }
     },
-    "_links":{
+    "_links": {
         "self": { "href": "/teams/{team_id}" },
         "invites": { "href": "/teams/{team_id}/invites" },
         "members": { "href": "/teams/{team_id}/members" },
@@ -3881,30 +3909,28 @@ GET /teams/{team_id}/activity{?start,limit,type}
                     "last_name": "Van Damme",
                     "company": "Round House Inc.",
                     "job_title": "CEO",
-                    "_links": {
-                        "avatar": {
-                            "_links": {
-                                "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
-                                "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
-                                "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
-                                "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
-                                "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
-                                "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
-                                "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
-                            }
-                        },
-                        "banner": {
-                            "_links": {
-                                "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
-                                "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
-                                "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
-                                "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
-                                "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
-                                "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
-                                "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
-                                "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
-                                "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
-                            }
+                    "avatar": {
+                        "_links": {
+                            "38": { "href": "https://i.letslynk.com/u/9fkoWokA/a/38.jpg" },
+                            "50": { "href": "https://i.letslynk.com/u/9fkoWokA/a/50.jpg" },
+                            "75": { "href": "https://i.letslynk.com/u/9fkoWokA/a/75.jpg" },
+                            "100": { "href": "https://i.letslynk.com/u/9fkoWokA/a/100.jpg" },
+                            "150": { "href": "https://i.letslynk.com/u/9fkoWokA/a/150.jpg" },
+                            "200": { "href": "https://i.letslynk.com/u/9fkoWokA/a/200.jpg" },
+                            "300": { "href": "https://i.letslynk.com/u/9fkoWokA/a/300.jpg" }
+                        }
+                    },
+                    "banner": {
+                        "_links": {
+                            "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                            "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                            "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                            "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                            "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                            "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                            "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                            "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                            "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
                         }
                     }
                 },
@@ -3953,17 +3979,19 @@ GET /teams/{team_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
+            "team": {
+                "name": "Company A",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Document",
-                "team": {
-                    "name": "Company A",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "document",
-                "file-type": "word",
-                "document": "/users/{user_id}/goodie/{goodie_collection_id}/document"
+                "document": {
+                    "type": "word",
+                    "url": "/users/{user_id}/goodie/{goodie_collection_id}/document"
+                }
             }
         },
         {
@@ -3975,35 +4003,35 @@ GET /teams/{team_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
+            "team": {
+                "name": "Company B",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Image",
-                "team": {
-                    "name": "Company B",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "image",
-                "image": {
-                    "banner": "/users/{user_id}/goodie/{goodie_collection_id}/image?size=banner",
-                    "full": "/users/{user_id}/goodie/{goodie_collection_id}/image"
+                "_links": {
+                    "banner": { "href": "/users/{user_id}/goodie/{goodie_collection_id}/image?size=banner" },
+                    "full": { "href": "users/{user_id}/goodie/{goodie_collection_id}/image" }
                 }
             }
         },
         {
             "type": "goodie",
             "date": "2013-06-30T12:36:00Z",
+            "team": {
+                "name": "Company C",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
                 "name": "Example Goodie - Video Embedded Player", 
-                "team": {
-                    "name": "Company C",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
                 "type": "video",
                 "video": {
-                    "type": "embedded-player",
+                    "type": "embedded",
                     "url": "http://www.youtube.com/watch?v=SxHVhxbtrhY"
                 }
             }
@@ -4011,17 +4039,17 @@ GET /teams/{team_id}/activity{?start,limit,type}
         {
             "type": "goodie",
             "date": "2013-06-30T12:35:00Z",
+            "team": {
+                "name": "Company A",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
-                "name": "Example Goodie - Video File", 
-                "team": {
-                    "name": "Company A",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
+                "name": "Example Goodie - Video File",
                 "type": "video",
                 "video": {
-                    "type": "video-file",
+                    "type": "file",
                     "url": "http://www.self-hosted-video.com/video.m4v"
                 }
             }
@@ -4035,16 +4063,18 @@ GET /teams/{team_id}/activity{?start,limit,type}
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
+            "team": {
+                "name": "Company D",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" } 
+                }
+            },
             "goodie": {
-                "name": "Example Goodie - URL", 
-                "team": {
-                    "name": "Company D",
-                    "_links": {
-                        "self": { "href": "/teams/{team_id}" } 
-                    }
-                },
+                "name": "Example Goodie - URL",
                 "type": "website",
-                "url": "http://www.letslynk.com"
+                "website": {
+                    "url": "http://www.letslynk.com"
+                }
             }
         },
         {
@@ -4052,16 +4082,22 @@ GET /teams/{team_id}/activity{?start,limit,type}
             "date": "2013-06-30T12:33:00Z",
             "event": {
                 "name": "Event B",
+                "banner": {
+                    "_links": {
+                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                    }
+                },
                 "_links": {
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
-            },
-            "attended": {
-                "name": "Example Event A", 
-                "banner": "/users/{user_id}/events/{event_id}/banner",
-                "_links": {
-                    "self": { "href": "/users/{user_id}/events/{event_id}" }
-                } 
             }
         },
         {
@@ -4069,17 +4105,23 @@ GET /teams/{team_id}/activity{?start,limit,type}
             "date": "2013-06-30T12:32:00Z",
             "event": {
                 "name": "Event B",
+                "banner": {
+                    "_links": {
+                        "320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+                        "480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+                        "612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+                        "640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+                        "720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+                        "960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+                        "1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+                        "1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+                        "1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+                    }
+                },
                 "_links": {
                     "event": { "href": "/users/{user_id}/events/{event_id}" }
                 }
             },
-            "registered": {
-                "name": "Example Event B", 
-                "banner": "/users/{user_id}/events/{event_id}/banner",
-                "_links": {
-                    "self": { "href": "/users/{user_id}/events/{event_id}" }
-                } 
-            }
         },
         {
             "type": "collected-goodie",
@@ -4091,9 +4133,11 @@ GET /teams/{team_id}/activity{?start,limit,type}
                 }
             },
             "goodie": {
-                "name": "Example Goodie - URL", 
+                "name": "Example Goodie - URL",
                 "type": "website",
-                "url": "http://www.letslynk.com",
+                "website": {
+                    "url": "http://www.letslynk.com"
+                },
                 "_links": {
                     "self": { "href": "/teams/{team_id}/goodie/{goodie_id}" } 
                 } 

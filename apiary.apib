@@ -4262,8 +4262,8 @@ GET /teams/{team_id}/goodie_bag{?start,limit,type*,team*,event*}
             "collected_date": "2013-06-30T12:30:00Z",
             "name": "2013 Product Brochure",
             "type": "Document",
+            "sub-type": "pdf",
             "url": "/docs/team/1/asdpoqwefpj.pdf",
-            "size": "1MB",
             "team": {
                 "name": "Kung Fu Masters",
                 "_links": {
@@ -4279,13 +4279,26 @@ GET /teams/{team_id}/goodie_bag{?start,limit,type*,team*,event*}
             "name": "2013 Product Video",
             "type": "Video",
             "url": "/docs/team/1/safheqfgqhf.mp4",
-            "size": "20MB",
             "team": {
                 "name": "Kung Fu Masters",
                 "_links": {
                     "self": { "href": "/teams/{team_id}" }
                 }
             },
+            "thumbnail": {
+				"_links": {
+					"original": { "href": "https://i.letslynk.com/u/9fkoWokA/b/orig.jpg" },
+					"320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+					"480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+					"612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+					"640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+					"720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+					"960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+					"1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+					"1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+					"1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+				}
+			},
             "_links": {
                 "self": { "href": "/teams/{team_id}/goodie_bag/{goodie_id}" }
             }
@@ -4315,8 +4328,8 @@ GET /teams/{team_id}/goodie_bag/{goodie_collection_id}
     "collected_date": "2013-06-30T12:30:00Z",
     "name": "2013 Product Brochure",
     "type": "Document",
+    "sub_type": "pdf",
     "url": "/docs/team/1/asdpoqwefpj.pdf",
-    "size": "1MB",
     "team": {
         "name": "Kung Fu Masters",
         "_links": {
@@ -4349,8 +4362,8 @@ POST /teams/{team_id}/goodie_bag
     "collected_date": "2013-06-30T12:30:00Z",
     "name": "2013 Product Brochure",
     "type": "Document",
+    "sub_type": "pdf",
     "url": "/docs/team/1/asdpoqwefpj.pdf",
-    "size": "1MB",
     "team":{
         "name": "Kung Fu Masters",
         "_links": {
@@ -5576,6 +5589,7 @@ GET /teams/{team_id}/goodies{?start,limit,type*}
         {
             "name": "2013 Product List",
             "type": "document",
+            "sub_type": "pdf",
             "url": "http://some.url/products.pdf",
             "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
             "_links": {
@@ -5586,6 +5600,20 @@ GET /teams/{team_id}/goodies{?start,limit,type*}
             "name": "Awesome Video",
             "type": "video",
             "url": "http://some.url/video.m4v",
+            "thumbnail": {
+				"_links": {
+					"original": { "href": "https://i.letslynk.com/u/9fkoWokA/b/orig.jpg" },
+					"320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+					"480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+					"612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+					"640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+					"720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+					"960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+					"1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+					"1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+					"1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+				}
+			},
             "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
             "_links": {
                 "self": { "href": "/teams/{team_id}/goodies/{goodie_id}" }
@@ -5610,28 +5638,13 @@ GET /teams/{team_id}/goodies/{goodie_id}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "goodies": [
-        {
-            "name": "2013 Product List",
-            "type": "document",
-            "url": "http://some.url/products.pdf",
-            "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
-            "_links": {
-                "self": { "href": "/teams/{team_id}/goodies/{goodie_id}" }
-            }
-        },
-        {
-            "name": "Awesome Video",
-            "type": "video",
-            "url": "http://some.url/video.m4v",
-            "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
-            "_links": {
-                "self": { "href": "/teams/{team_id}/goodies/{goodie_id}" }
-            }
-        }
-    ],
+    "name": "2013 Product List",
+    "type": "document",
+    "sub_type": "pdf",
+    "url": "http://some.url/products.pdf",
+    "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
     "_links": {
-        "self": { "href" : "/teams/{team_id}/goodies" } 
+        "self": { "href": "/teams/{team_id}/goodies/{goodie_id}" }
     }
 }
 

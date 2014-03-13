@@ -3108,8 +3108,24 @@ GET /users/{user_id}/goodie_bag{?start,limit,type*,team*,event*,search}
             "collected_date": "2013-06-30T12:30:00Z",
             "name": "2013 Product Brochure",
             "type": "document",
+			"sub-type": "pdf"
             "url": "/docs/team/1/asdpoqwefpj.pdf",
             "size": "1MB",
+            "team": {
+                "name": "Kung Fu Masters",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" }
+                }
+            },
+            "_links": {
+                "self": { "href": "/users/{user_id}/goodie_bag/{goodie_id}" }
+            }
+        },
+		{
+            "collected_date": "2013-06-30T12:30:00Z",
+            "name": "HG Apps Website",
+            "type": "website",
+            "url": "www.hgappstore.com",
             "team": {
                 "name": "Kung Fu Masters",
                 "_links": {
@@ -3124,14 +3140,57 @@ GET /users/{user_id}/goodie_bag{?start,limit,type*,team*,event*,search}
             "collected_date": "2013-06-30T12:30:00Z",
             "name": "2013 Product Video",
             "type": "video",
-            "url": "/docs/team/1/video1.mp4",
-            "size": "20MB",
+            "url": "https://www.youtube.com/watch?v=XJDUgkSzh-Y",
             "team": {
                 "name": "Kung Fu Masters",
                 "_links": {
                     "self": { "href": "/teams/{team_id}" }
                 }
             },
+			"thumbnail": {
+				"_links": {
+					"original": { "href": "https://i.letslynk.com/u/9fkoWokA/b/orig.jpg" },
+					"320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+					"480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+					"612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+					"640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+					"720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+					"960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+					"1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+					"1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+					"1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+				}
+			},
+            "_links": {
+                "self": { "href": "/users/{user_id}/goodie_bag/{goodie_id}" }
+            }
+        },
+		{
+            "collected_date": "2013-06-30T12:30:00Z",
+            "name": "2013 Product Image",
+            "type": "image",
+            "url": "/docs/team/1/image.jpg",
+            "size": "2MB",
+            "team": {
+                "name": "Kung Fu Masters",
+                "_links": {
+                    "self": { "href": "/teams/{team_id}" }
+                }
+            },
+			"thumbnail": {
+				"_links": {
+					"original": { "href": "https://i.letslynk.com/u/9fkoWokA/b/orig.jpg" },
+					"320": { "href": "https://i.letslynk.com/u/9fkoWokA/b/320.jpg" },
+					"480": { "href": "https://i.letslynk.com/u/9fkoWokA/b/480.jpg" },
+					"612": { "href": "https://i.letslynk.com/u/9fkoWokA/b/612.jpg" },
+					"640": { "href": "https://i.letslynk.com/u/9fkoWokA/b/640.jpg" },
+					"720": { "href": "https://i.letslynk.com/u/9fkoWokA/b/720.jpg" },
+					"960": { "href": "https://i.letslynk.com/u/9fkoWokA/b/960.jpg" },
+					"1080": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1080.jpg" },
+					"1200": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1200.jpg" },
+					"1600": { "href": "https://i.letslynk.com/u/9fkoWokA/b/1600.jpg" }
+				}
+			},
             "_links": {
                 "self": { "href": "/users/{user_id}/goodie_bag/{goodie_id}" }
             }
@@ -3159,6 +3218,7 @@ GET /users/{user_id}/goodie_bag/{goodie_id}
     "collected_date": "2013-06-30T12:30:00Z",
     "name": "2013 Product Brochure",
     "type": "document",
+    "sub_type": "pdf",
     "url": "/docs/team/1/asdpoqwefpj.pdf",
     "size": "1MB",
     "team": {
@@ -3192,6 +3252,7 @@ POST /users/{user_id}/goodie_bag
     "collected_date": "2013-06-30T12:30:00Z",
     "name": "2013 Product Brochure",
     "type": "document",
+    "sub_type": "pdf",
     "url": "/docs/team/1/asdpoqwefpj.pdf",
     "size": "1MB",
     "team": {

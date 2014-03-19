@@ -2911,66 +2911,47 @@ GET /users/{user_id}/invites{?type,start,limit,order}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "invites": [    
+    "invites": [   
         {
             "_invite_id": 1,
             "type": "team_join",
             "status": "pending",
             "level": "member",
-            "team": {
-                "_team_id": 1,
-                "name": "Kung Fu Masters"
-            },
-            "event": {
-                "_event_id": 1,
-                "name": "The Kung Fu Show",
-                "_links": {
-                    "event": { "href": "/users/{user_id}/events/{event_id}" }
-                }
-            },
+            "team_name": "Kung Fu Masters",
+            "event_name": "The Food Show 2013",
+            "date": "2014-03-19T10:53:12Z",
             "_links": {
                 "self": { "href": "/users/{user_id}/invites/{invite_id}" }
             }
         },
         {
             "_invite_id": 2,
-            "type": "team_create",
+            "type": "event_staff",
             "status": "pending",
-            "event": {
-                "name": "The Food Show",
-                "_links": {
-                    "event": { "href": "/users/{user_id}/events/{event_id}" }
-                }
-            },
+            "level": "admin",
+            "event_name": "The Food Show 2013",
+            "date": "2014-03-19T10:53:12Z",
             "_links": {
                 "self": { "href": "/users/{user_id}/invites/{invite_id}" }
             }
         },
         {
             "_invite_id": 3,
-            "type": "event_staff",
+            "type": "event_visit",
             "status": "pending",
-            "level": "member",
-            "event": {
-                "name": "The Kung Fu Show",
-                "_links": {
-                    "event": { "href": "/users/{user_id}/events/{event_id}" }
-                }
-            },
+            "event_name": "The Food Show 2013",
+            "date": "2014-03-19T10:53:12Z",
             "_links": {
                 "self": { "href": "/users/{user_id}/invites/{invite_id}" }
             }
         },
         {
             "_invite_id": 4,
-            "type": "event_visit",
+            "type": "team_create",
             "status": "pending",
-            "event": {
-                "name": "The Kung Fu Show",
-                "_links": {
-                    "event": { "href": "/users/{user_id}/events/{event_id}" }
-                }
-            },
+            "team_name": "Kung Fu Masters",
+            "event_name": "The Food Show 2013",
+            "date": "2014-03-19T10:53:12Z",
             "_links": {
                 "self": { "href": "/users/{user_id}/invites/{invite_id}" }
             }
@@ -2999,17 +2980,9 @@ GET /users/{user_id}/invites/{invite_id}
     "type": "team_join",
     "status": "pending",
     "level": "member",
-    "team": {
-        "_team_id": 1,
-        "name": "Kung Fu Masters"
-    },
-    "event": {
-        "_event_id": 1,
-        "name": "The Kung Fu Show",
-        "_links": {
-            "event": { "href": "/users/{user_id}/events/{event_id}" }
-        }
-    },
+    "team_name": "Kung Fu Masters",
+    "event_name": "The Food Show 2013",
+    "date": "2014-03-19T10:53:12Z",
     "_links": {
         "self": { "href": "/users/{user_id}/invites/{invite_id}" }
     }
@@ -3042,20 +3015,9 @@ PUT /users/{user_id}/invites/{invite_id}
     "type": "team_join",
     "status": "accepted",
     "level": "member",
-    "team": {
-        "_team_id": 1,
-        "name": "Kung Fu Masters",
-        "_links": {
-            "team": { "href": "/users/{user_id}/teams/{team_id}" }
-        }
-    },
-    "event": {
-        "_event_id": 1,
-        "name": "The Kung Fu Show",
-        "_links": {
-            "event": { "href": "/users/{user_id}/events/{event_id}" }
-        }
-    },
+    "team_name": "Kung Fu Masters",
+    "event_name": "The Food Show 2013",
+    "date": "2014-03-19T10:53:12Z",
     "_links": {
         "self": { "href": "/users/{user_id}/invites/{invite_id}" }
     }

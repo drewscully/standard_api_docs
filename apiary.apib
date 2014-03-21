@@ -8030,17 +8030,17 @@ POST /events/{event_id}/registration_form
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
 {
-    "profile_fields":[
+    "profile_fields": {
         "first_name": "Brucie",
         "last_name": "Lei"
-    ],
-    "questions": [
+    },
+    "questions": {
         "100": 1,
         "101": 4,
         "102": [ 5, 7 ],
         "103": "Bruce Lee",
         "104": "I once karate chopped a giraffe in half"
-    ],
+    },
     "invite_id": 7
 }
 < 201

@@ -6712,7 +6712,7 @@ __Required Parameters:__
 * left (Integer) - _The number of pixels from the left of the image to start the crop_
 * upper (Integer) - _The number of pixels from the top of the image to start the crop_
 * width (Integer) - _The width of the crop area (All avatars are square so width == height)_
-* size_reference (String) - _The image size used while calculating the above crop dimensions e.g. mdpi, hdpi, xhdpi etc._
+* image_width (String) - _The width of the image used while calculating the above crop dimensionsin pixels_
 
 __Notes:__
 
@@ -6726,7 +6726,7 @@ POST /events/{event_id}/avatar/crop
     "left": 200,
     "upper": 50,
     "width": 300,
-    "size_reference": "xhdpi"
+    "image_width": 550
 }
 < 200
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
@@ -6863,7 +6863,7 @@ __Required Parameters:__
 * left (Integer) - _The number of pixels from the left of the image to start the crop_
 * upper (Integer) - _The number of pixels from the top of the image to start the crop_
 * width (Integer) - _The width of the crop area (All banners have a 3:1 width to height ratio so the height will be calculated by the API)_
-* size_reference (String) - _The image size used while calculating the above crop dimensions e.g. mdpi, hdpi, xhdpi etc._
+* image_width (String) - _The width of the image used while calculating the above crop dimensionsin pixels_
 
 __Notes:__
 
@@ -6877,7 +6877,7 @@ POST /events/{event_id}/banner/crop
     "left": 200,
     "upper": 50,
     "width": 800,
-    "size_reference": "xhdpi"
+    "image_width": 800
 }
 < 200
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT

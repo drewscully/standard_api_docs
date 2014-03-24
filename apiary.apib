@@ -9937,12 +9937,22 @@ GET /team_types
         {
             "name": "basic",
             "label": "Basic",
-            "price": 0
+            "price": {
+                "base": 0
+                "vat_percentage": 20,
+                "vat_amount": 0,
+                "total": 0
+            }
         },
         {
             "name": "pro",
             "label": "Pro",
-            "price": 85
+            "price": {
+                "base": 85
+                "vat_percentage": 20,
+                "vat_amount": 17,
+                "total": 102
+            }
         }
     ]
 }
@@ -10010,19 +10020,34 @@ GET /event_types
             "name": "free",
             "label": "Free",
             "registrations": 100,
-            "price": 0
+            "price": {
+                "base": 0
+                "vat_percentage": 20,
+                "vat_amount": 0,
+                "total": 0
+            }
         },
         {
             "name": "tier1",
             "label": "small",
             "registrations": 500,
-            "price": 100
+            "price": {
+                "base": 100
+                "vat_percentage": 20,
+                "vat_amount": 20,
+                "total": 120
+            }
         },
         {
             "name": "tier2",
             "label": "medium",
             "registrations": 1000,
-            "price": 200
+            "price": {
+                "base": 200
+                "vat_percentage": 20,
+                "vat_amount": 40,
+                "total": 240
+            }
         }
     ]
 }

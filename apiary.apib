@@ -3465,6 +3465,31 @@ GET /users/{user_id}/registered_events/{event_id}
 }
 
 
+
+--
+User > Registered Events > Invites
+
+--
+
+Retrieve the notification numbers
+
+__Authentication:__ Required
+
+__Authorization:__ The caller must be authorized as the owner of the user resource
+
+POST /users/{user_id}/registered_events/{event_id}/invites
+> Content-Type: application/json
+> Authorization: Basic {your encoded token}
+< 200
+< Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+{
+    "email": "chuck.liddel@mma.com",
+    "name": "Chuck",
+    "message": "Get down to the Kick Ass Kung Fu event, it's gonna kick ass!"
+}
+
+
+
 --
 User > Teams
 A collection of teams that a user belongs to.

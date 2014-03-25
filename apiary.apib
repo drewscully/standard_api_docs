@@ -3471,7 +3471,7 @@ User > Registered Events > Invites
 
 --
 
-Retrieve the notification numbers
+Send an invite to the registered event to a friend.
 
 __Authentication:__ Required
 
@@ -3480,13 +3480,31 @@ __Authorization:__ The caller must be authorized as the owner of the user resour
 POST /users/{user_id}/registered_events/{event_id}/invites
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
-< 200
+< 201
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "email": "chuck.liddel@mma.com",
     "name": "Chuck",
     "message": "Get down to the Kick Ass Kung Fu event, it's gonna kick ass!"
 }
+
+
+
+--
+User > Registered Events > Badge
+
+--
+
+Retrieve your event badge. Returns a PDF
+
+__Authentication:__ Required
+
+__Authorization:__ The caller must be authorized as the owner of the user resource
+
+GET /users/{user_id}/registered_events/{event_id}/badge
+> Content-Type: application/json
+> Authorization: Basic {your encoded token}
+< 200
 
 
 

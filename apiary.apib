@@ -408,7 +408,6 @@ __Authorization:__ The caller must be authorized as the owner of the requested r
 
 GET /users/{user_id}
 > Authorization: Basic {your encoded token}
-> Content-Type: application/json
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
 < Content-Type: application/json
@@ -620,7 +619,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the requested resource 
 
 DELETE /users/{user_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204 
@@ -703,7 +701,6 @@ POST /users/{user_id}/link/facebook/mobile_auth
     "access_token": "IwDbeiWINrotP3JOd1EGoEY7OmOBd2DyV8lh73mutCM.eyJpdiI6IkdKd3BvWlItcWlWRzIwTGYtUkRUVWcifQ.J6qNtSibMmm0yFe2QNHG46jnIUXef3dV-NnbYqXkfrFABjPrgMPQRUeKHJ3GxX1T3nlU7-4P8FUT6dlfwSwHfNJrheTUZIXdd3AlsSRUiUer5xEdFA9IsGEMn6GyHheH9DSr76IeZcBjl-_s4ub3kg",
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -814,7 +811,6 @@ POST /users/{user_id}/link/linkedin/code
     "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -964,7 +960,6 @@ POST /users/{user_id}/link/google/code
     "state": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -998,7 +993,6 @@ POST /users/{user_id}/link/google/mobile_auth
     "code": "IwDbeiWINrotP3JOd1EGoEY7OmOBd2DyV8lh73mutCM.eyJpdiI6IkdKd3BvWlItcWlWRzIwTGYtUkRUVWcifQ.J6qNtSibMmm0yFe2QNHG46jnIUXef3dV-NnbYqXkfrFABjPrgMPQRUeKHJ3GxX1T3nlU7-4P8FUT6dlfwSwHfNJrheTUZIXdd3AlsSRUiUer5xEdFA9IsGEMn6GyHheH9DSr76IeZcBjl-_s4ub3kg",
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -1108,7 +1102,6 @@ POST /users/{user_id}/link/twitter/code
     "oauth_verifier": "Z6lWLUs9KqtAYP8d4AaGeXgNM7t6GAqHofFEhkrugL9w4xDyQYo"
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -1186,7 +1179,6 @@ POST /users/{user_id}/link/twitter/mobile_auth
     "screen_name": "theseancook"
 }
 < 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -1215,7 +1207,8 @@ Fetches the user's Twitter profile information
 
 GET /users/{user_id}/link/twitter/profile
 > Authorization: Basic {your encoded token}
-> Content-Type: application/json
+< 201
+< Content-Type: application/json
 {
     "title": "Mr",
     "first_name": "Steven",
@@ -1240,8 +1233,6 @@ GET /users/{user_id}/link/twitter/profile
         }
     }
 }
-< 201
-< Content-Type: application/json
 +++++
 < 400
 < Content-Type: application/json
@@ -1476,6 +1467,7 @@ POST /users/{user_id}/avatar/crop
     "image_width": 550
 }
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_links": {
@@ -1553,6 +1545,7 @@ GET /users/{user_id}/banner
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
 "_links": {
@@ -1626,6 +1619,7 @@ POST /users/{user_id}/banner/crop
     "image_width": 1600
 }
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_links": {
@@ -1665,10 +1659,10 @@ __URI Filters__:
 
      Example: `/users/1/activity?start=0&limit=10&type=all`
 GET /users/{user_id}/activity{?start,limit,type}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "activity": [
@@ -1982,6 +1976,7 @@ POST /users/{user_id}/contacts
     "activity_time": "2013-06-30T12:31:00Z"
 }
 < 201
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "user": {
@@ -2043,17 +2038,20 @@ POST /users/{user_id}/contacts
 }
 +++++
 < 400
+< Content-Type: application/json
 {
     "error": "The specified QR code is not in the correct format",
 }
 +++++
 < 400
+< Content-Type: application/json
 {
     "error-1": "The required field 'qr_code' was missing in the request",
     "error-2": "The field 'flibble' is not allowed in this request"
 }
 +++++
 < 404 
+< Content-Type: application/json
 {
     "error": "The specified QR code was not found",
 }
@@ -2076,7 +2074,6 @@ __URI filters:__
 Example: `users/1/contacts?tag=1&tag=2&type=all&start=0&limit=10&search=Bruce`
 
 GET /users/{user_id}/contacts{?tag*,type,start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2205,6 +2202,7 @@ GET /users/{user_id}/contacts{?tag*,type,start,limit}
 }
 +++++
 < 404
+< Content-Type: application/json
 {
     "error": "The requested resource could not be found"
 }
@@ -2217,7 +2215,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
 GET /users/{user_id}/contacts/{contact_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2299,13 +2296,13 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
 DELETE /users/{user_id}/contacts/{contact_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 +++++
 < 404
+< Content-Type: application/json
 {
     "error": "The requested resource could not be found"
 }
@@ -2334,7 +2331,6 @@ __URI filters:__
 Example: `users/1/contacts/3/connections?start=0&limit=10`
 
 GET /users/{user_id}/contacts/{contact_id}/connections
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2383,7 +2379,6 @@ __Authorization:__ The caller must be authorized as the owner of the user resour
 Example: `users/1/contacts/3/connections/201`
 
 GET /users/{user_id}/contacts/{contact_id}/connections/{connection_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2429,7 +2424,6 @@ __URI filters:__
 Example: `/users/1/contacts/52/notes?start=0&limit=10`
 
 GET /users/{user_id}/contacts/{contact_id}/notes{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2467,7 +2461,6 @@ __Authorization:__ The caller must be authorized as the owner of the user resour
 
 Example: `/users/1/contacts/52/notes/1013`
 GET /users/{user_id}/contacts/{contact_id}/notes/{note_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2547,7 +2540,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
 DELETE /users/{user_id}/contacts/{contact_id}/notes/{note_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -2577,7 +2569,6 @@ __URI filters:__
 * limit (Integer) *the maximum number of items to return*
 
 GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2628,7 +2619,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource
 
 GET /users/{user_id}/contacts/{contact_id}/tags/{tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2690,7 +2680,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
 DELETE /users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -2723,9 +2712,9 @@ __URI filters:__
 * search (String) *a search term to filter the result set by. The server will search in the contact full names.*
 
 GET /users/{user_id}/contact_list{?tag*,search,order,start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 < 200
+< Content-Type: application/json
 {
     "contact_list": [
         {
@@ -2844,7 +2833,6 @@ __URI filters:__
 
 Example: `/users/1/events?start=0&limit=10&order=datedesc`
 GET /users/{user_id}/events{?start,limit,order}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2904,7 +2892,6 @@ __URI filters:__
 Example: `/users/1/invites?type=event&start=0&limit=10&order=datedesc`
 
 GET /users/{user_id}/invites{?type,start,limit,order}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2974,7 +2961,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 GET /users/{user_id}/invites/{invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3060,7 +3046,6 @@ __URI filters:__
 Example: `/users/1/goodie_bag?start=0&limit=10&type=1&team=13`
 
 GET /users/{user_id}/goodie_bag{?start,limit,type*,team*,event*,search}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3172,7 +3157,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource
 GET /users/{user_id}/goodie_bag/{goodie_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3237,7 +3221,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource
 DELETE /users/{user_id}/goodie_bag/{goodie_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 < 204
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
@@ -3255,10 +3238,10 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource
 
 GET /users/{user_id}/notifications
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "notifications": {
@@ -3287,7 +3270,6 @@ __URI filters:__
 * limit (Integer) *the maximum number of items to return. The default value is 10*
 * order (String) *allowed values __dateasc__ and __datedesc__*
 GET /users/{user_id}/registered_events{?start,limit,order}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3408,7 +3390,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the user resource
 
 GET /users/{user_id}/registered_events/{event_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3524,7 +3505,6 @@ __URI filters:__
 * start (Integer) *the item number to start from*
 * limit (Integer) *the maximum number of items to return*
 GET /users/{user_id}/teams{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3626,7 +3606,6 @@ __URI filters:__
 * limit (Integer) *the maximum number of items to return*
 
 GET /users/{user_id}/tags
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3672,7 +3651,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the owner of the requested resource
 
 GET /users/{user_id}/tags/{user_tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3826,7 +3804,6 @@ __Authentication:__ Required
 
 __Authorization:__ The user must be a member of the team they are requesting
 GET /teams/{team_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -3921,7 +3898,6 @@ __Authorization:__ The user must be a admin or owner of the team they are reques
 __Note:__ Deleting a team, archives all that teams information and goodies, users who have collected team goodies will still have access to it.
 
 DELETE /teams/{team_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -3954,7 +3930,6 @@ __URI Filters__:
 Example: `/teams/1/activity?start=0&limit=10&type=all`
 
 GET /teams/{team_id}/activity{?start,limit,type}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4257,7 +4232,6 @@ __URI filters:__
 Example: `/teams/1/goodie_bag?start=0&limit=10&type=1&team=13`
 
 GET /teams/{team_id}/goodie_bag{?start,limit,type*,team*,event*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4325,7 +4299,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the admin or member of the team resource
 
 GET /teams/{team_id}/goodie_bag/{goodie_collection_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4390,7 +4363,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as the admin of the team resource
 
 DELETE /teams/{team_id}/goodie_bag/{goodie_collection_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -4431,6 +4403,7 @@ POST /teams/{team_id}/contacts
     "activity_time": "2013-06-30T12:31:00Z"
 }
 < 201
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "user": {
@@ -4509,10 +4482,10 @@ __URI filters:__
 Example: `users/1/contacts?tag=1&tag=2&type=all&start=0&limit=10&search=Bruce`
 
 GET /team/{team_id}/contacts{?tag*,type,start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "contacts": [
@@ -4643,7 +4616,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as a member or admin of the team
 
 GET /teams/{team_id}/contacts/{contact_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4717,7 +4689,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team
 DELETE /teams/{team_id}/contacts/{contact_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -4749,7 +4720,6 @@ __URI filters:__
 Example: `teams/1/contacts/3/connections?start=0&limit=10`
     
 GET /teams/{team_id}/contacts/{contact_id}/connections
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4797,7 +4767,6 @@ __Authorization:__ The caller must be authorized as a member or admin of the tea
 
 Example: `teams/1/contacts/3/connections/201`
 GET /teams/{team_id}/contacts/{contact_id}/connections/{connection_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4843,7 +4812,6 @@ __URI filters:__
 Example: `/team/1/contacts/52/notes?start=0&limit=10
 `
 GET /teams/{team_id}/contacts/{contact_id}/notes{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4882,7 +4850,6 @@ __Authorization:__ The caller must be authorized as a member or admin of the tea
 Example: `/teams/1/contacts/52/notes/1013`
 
 GET /teams/{team_id}/contacts/{contact_id}/notes/{note_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -4962,7 +4929,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be authorized as a member or admin of the team 
 
 DELETE /teams/{team_id}/contacts/{contact_id}/notes/{note_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -4992,7 +4958,6 @@ __URI filters:__
 * start (Integer) *the item number to start from*
 * limit (Integer) *the maximum number of items to return*
 GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5042,7 +5007,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team
 GET /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5102,7 +5066,6 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team 
 DELETE /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -5135,10 +5098,10 @@ __URI filters:__
 * search (String) *a search term to filter the result set by. The server will search in the contact full names.*
 
 GET /teams/{team_id}/contact_list{?tag*,search,order,start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "contact_list": [
@@ -5323,7 +5286,6 @@ __URI filters:__
 
 * status (String) *the status of the invites you wish to filter by. Acceptable values are __pending__, __accepted__ and __declined__*
 GET /teams/{team_id}/event_invites{?start,limit,status*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5443,7 +5405,6 @@ __URI filters:__
 * limit (Integer) *the maximum number of items to display*
 * status (String) *acceptable values are __pending__, __accepted__ and __declined__*
 GET /teams/{team_id}/invites{?start,limit,status*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5483,7 +5444,6 @@ __Authentication:__ Required
 
 __Authorization:__ The user must be a admin or owner of the team they are requesting
 GET /teams/{team_id}/invites/{team_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5508,7 +5468,6 @@ __Authorization:__ The user must be a admin or owner of the team they are reques
 
 __Note:__ Only *__pending__* invites can be revoked, if the user has already accepted the invite, you will have to delewte the user from the team.
 DELETE /teams/{team_id}/invites/{team_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -5622,7 +5581,6 @@ __URI filters:__
 * type (Integer) *the goodie type id's that you wish to filter by*
 
 GET /teams/{team_id}/goodies{?start,limit,type*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5675,7 +5633,6 @@ __Authentication:__ Required
 
 __Authorization:__ The user must be a member of the team they are requesting
 GET /teams/{team_id}/goodies/{goodie_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5731,7 +5688,6 @@ __Authentication:__ Required
 
 __Authorization:__ The user must be an owner or administrator of the team they are requesting
 DELETE /teams/{team_id}/goodies/{goodie_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -5765,7 +5721,6 @@ __URI filters:__
 * type (Integer) *acceptable values are __member__, __owner__ and __admin__*
 
 GET /teams/{team_id}/members{?start,limit,type*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5807,7 +5762,6 @@ __Authentication:__ Required
 
 __Authorization:__ The user must be a member of the team they are requesting
 GET /teams/{team_id}/members/{user_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5867,7 +5821,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be an owner or admin of the team they are requesting
 
 DELETE /teams/{team_id}/members/{member_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -5929,7 +5882,6 @@ __URI filters:__
 * limit (Integer) *the maximum number of items to display*
 
 GET /teams/{team_id}/tags{?start,limit}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5969,7 +5921,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be a member of the team they are requesting
 
 GET /teams/{team_id}/tags/{team_tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -6026,7 +5977,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be an owner or admiistrator of the team they are requesting
 
 DELETE /teams/{team_id}/tags/{team_tag_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -6052,7 +6002,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /teams/{team_id}/stats/connection/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -6141,7 +6090,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /teams/{team_id}/stats/goodies/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -6320,7 +6268,6 @@ __Authentication:__ Required
 
 __Authorization:__ This method requires no additional authorization.
 GET /events/{event_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 < 200
 < Content-Type: application/json
@@ -6511,7 +6458,6 @@ __Authorization:__ The caller must be the owner or administrator of the specifie
 
 __Note__: ...
 DELETE /events/{event_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -6578,7 +6524,6 @@ __URI filters:__
 * door\_id (Integer) *the doors that you wish to filter by*
 
 GET /events/{event_id}/attendances{start,limit,start_time,end_time,door_id*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -6621,7 +6566,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the event
 
 GET /events/{event_id}/attendances/{attendance_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -6701,6 +6645,7 @@ GET /events/{event_id}/avatar
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+< Content-Type: application/json
 {
     "_links": {
         "self": { "href": "/events/1/avatar" },
@@ -6772,6 +6717,7 @@ POST /events/{event_id}/avatar/crop
     "image_width": 550
 }
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_links": {
@@ -6849,6 +6795,7 @@ GET /events/{event_id}/banner
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_links": {
@@ -6923,6 +6870,7 @@ POST /events/{event_id}/banner/crop
     "image_width": 800
 }
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_links": {
@@ -6994,7 +6942,6 @@ __Authentication:__ Required
 __Authorization:__ None
 
 GET /events/{event_id}/days
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7029,7 +6976,6 @@ __Authentication:__ Required
 __Authorization:__ None
 
 GET /events/{event_id}/days/{event_day_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7065,6 +7011,7 @@ PUT /events/{event_id}/days/{event_day_id}
     "closing_time": "2013-06-15T19:00:00+02:00"
 }
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_event_day_id": 1,
@@ -7083,7 +7030,6 @@ __Authentication:__ Required
 __Authorization:__ Owner or administrator of the event
 
 DELETE /events/{event_id}/days/{event_day_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -7136,7 +7082,6 @@ _Authentication:__ Required
 __Authorization:__ Owner, administrator or staff of the event
 
 GET /events/{event_id}/doors
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7172,7 +7117,6 @@ _Authentication:__ Required
 __Authorization:__ Owner, administrator or staff of the event
 
 GET /events/{event_id}/doors/{door_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7222,7 +7166,6 @@ __Authentication:__ Required
 __Authorization:__ Owner or administrator of the event
 
 DELETE /events/{event_id}/doors/{door_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -7312,7 +7255,6 @@ __URI filters:__
 
 * status (String) *the status of the invites you wish to filter by. Acceptable values are __pending__, __accepted__ and __declined__*
 GET /events/{event_id}/invites{?start,limit,status*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7353,7 +7295,6 @@ __Authentication:__ Required
 __Authorization:__ Owner, administrator or staff of the event
 
 GET /events/{event_id}/invites/{event_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7380,7 +7321,6 @@ __Authorization:__ Owner, administrator or staff of the event
 __Note:__ An invte can only be revoked while it is still pending
 
 DELETE /events/{event_id}/invites/{event_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -7409,7 +7349,6 @@ __Note:__ Required can be set to one of the following values:
 __N.B.__ *The email field is a minimum requirement for all Lets Lynk accounts cannot be specified as it is always required*
 
 GET /events/{event_id}/profile_fields
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7562,7 +7501,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/questions
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7649,7 +7587,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/questions/{question_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7754,7 +7691,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 DELETE /events/{event_id}/questions/{question_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -7807,7 +7743,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/questions/{question_id}/answers
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7849,7 +7784,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/questions/{question_id}/answers/{answer_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7900,7 +7834,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be an owner or administrator of the specified event
 
 DELETE /events/{event_id}/questions/{question_id}/answers/{answer_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -7919,7 +7852,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be an team member of the specified event
 
 GET /events/{event_id}/questions/order
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -7971,10 +7903,10 @@ __URL parameters:__
 * __section__ - determines if the api returns profile fields, questions and answers or both. Acceptable values: "profile", "questions", "all". If this parameter is not supplied, all form information will be supplied.
 
 GET /events/{event_id}/registration_form{?section}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "profile_fields":[
@@ -8087,6 +8019,7 @@ POST /events/{event_id}/registration_form
     "invite_id": 7
 }
 < 201
+< Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "registration_date": "2014-02-28T16:15:57Z",
@@ -8118,7 +8051,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/registration_status
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8178,7 +8110,6 @@ __URI filters:__
 * end_time (String) [Format: YYYY-MM-DDTHH:MM:SSZ (RFC 3339)] *the end time to filter by*
 
 GET /events/{event_id}/registrations{?start,limit,start_time,end_time}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8323,7 +8254,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the specified event
 
 GET /events/{event_id}/registrations/{registration_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8411,7 +8341,6 @@ __URI filters:__
 * search (String) *text search that filters result by name and/or company name - any valid string can be supplied*
 
 GET /events/{event_id}/registrations_table{?start,limit,attended,search}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8539,7 +8468,6 @@ __URI filters:__
 * day_id (Integer) *the ids of the event days you wish to filter by*
 
 GET /events/{event_id}/seminars{?start,limit,day_id*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8586,7 +8514,6 @@ _Authentication:__ Required
 __Authorization:__ The caller must be a member of the specified event
 
 GET /events/{event_id}/seminars/{seminar_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8651,7 +8578,6 @@ _Authentication:__ Required
 __Authorization:__ The caller must be the owner or administrator of the specified event
 
 DELETE /events/{event_id}/seminars/{seminar_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -8709,7 +8635,6 @@ __URI filters:__
 * end_time (String) [Format: YYYY-MM-DDTHH:MM:SSZ (RFC 3339)] *the end time to filter by*
 
 GET /events/{event_id}/seminars/{seminar_id}attendances{start,limit,start_time,end_time}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8753,7 +8678,6 @@ __Authentication:__ Required
 __Authorization:__ The caller must be a staff member of the event
 
 GET /events/{event_id}/seminars/{seminar_id}/attendances/{attendance_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8797,7 +8721,6 @@ __URI filters:__
 * type (String) *filter by the type of staff member. Acceptable values are __owner__, __admin__ and __member__.*
 
 GET /events/{event_id}/staff{?start,limit,order,type*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8841,7 +8764,6 @@ _Authentication:__ Required
 __Authorization:__ The caller must be staff member of the specified event
 
 GET /events/{event_id}/staff/{user_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -8902,7 +8824,6 @@ _Authentication:__ Required
 __Authorization:__ The caller must be the owner or administrator of the specified event
 
 DELETE /events/{event_id}/staff/{user_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -8970,7 +8891,6 @@ __URI filters:__
 * type (String) *filter by the type of staff member. Acceptable values are __owner__, __admin__ and __member__.*
 
 GET /events/{event_id}/staff_invites{?start,limit,status*,type*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9012,7 +8932,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be a admin or owner of the event they are requesting
 
 GET /events/{event_id}/staff_invites/{staff_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9060,7 +8979,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be a staff member of the event they are requesting
 
 GET /events/{event_id}/state
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9125,7 +9043,6 @@ __URI filters:__
 * order (String) *order the results alphabetically on team name. Acceptable values are __asc__ or __desc__*
 
 GET /events/{event_id}/teams{?start,limit,order}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9167,7 +9084,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be an owner or administrator of the event they are requesting
 
 DELETE /events/{event_id}/teams/{team_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -9237,7 +9153,6 @@ __URI filters:__
 * status (String) *filter by the status of the invite. Acceptable values are __pending, __accepted__ and __declined__*
 
 GET /events/{event_id}/team_invites{?start,limit,status*}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9278,7 +9193,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be an owner or administrator of the event they are requesting
 
 GET /events/{event_id}/team_invites/{event_team_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9303,7 +9217,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be an owner or administrator of the event they are requesting
 
 DELETE /events/{event_id}/team_invites/{event_team_invite_id}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -9325,7 +9238,6 @@ __Authentication:__ Required
 __Authorization:__ The user must be a staff member of the event they are requesting
 
 GET /events/{event_id}/type
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9425,7 +9337,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /events/{event_id}/stats/registration/combo
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9484,7 +9395,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /events/{event_id}/stats/attendance/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9570,7 +9480,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /events/{event_id}/stats/connection/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9635,7 +9544,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /events/{event_id}/stats/goodies/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9683,7 +9591,6 @@ __Optional parameters:__
 * day (Int)
 
 GET /events/{event_id}/stats/seminar/combo{?day}
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9718,7 +9625,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /tag_icons
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9753,7 +9659,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /tag_colours
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9802,7 +9707,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /goodie_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9841,7 +9745,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /question_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9891,7 +9794,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /invitation_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9932,7 +9834,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /team_member_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -9969,7 +9870,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /team_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -10014,7 +9914,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /event_staff_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -10051,7 +9950,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /event_types
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -10109,7 +10007,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /event_states
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -10137,7 +10034,6 @@ __Authentication:__ Required
 __Authorization:__ No extra authorization required
 
 GET /avatars
-> Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200

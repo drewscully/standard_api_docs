@@ -2577,6 +2577,7 @@ GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
 {
     "assigned_tags": [
         {
+            "_assigned_tag_id": 1431,
             "tag": {
                 "_tag_id": 1001,
                 "name": "Hot Lead",
@@ -2591,6 +2592,7 @@ GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
             }
         },
         {
+            "_assigned_tag_id": 1433,
             "tag": {
                 "_tag_id": 1003,
                 "name": "Call Back",
@@ -2625,6 +2627,7 @@ GET /users/{user_id}/contacts/{contact_id}/tags/{tag_id}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "_assigned_tag_id": 1431,
     "tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -2659,6 +2662,7 @@ POST /users/{user_id}/contacts/{contact_id}/tags
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "_assigned_tag_id": 1431,
     "tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -4966,6 +4970,7 @@ GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
 {
     "assigned tags": [
          {
+             "_assigned_tag_id": 1431,
              "tag": {
                  "_tag_id": 1001,
                 "name": "Hot Lead",
@@ -4980,6 +4985,7 @@ GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
             }
         },
         {
+            "_assigned_tag_id": 1433,
             "tag": {
                 "_tag_id": 1003,
                 "name": "Call Back",
@@ -5013,6 +5019,7 @@ GET /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "_assigned_tag_id": 1431,
     "_tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -5046,6 +5053,7 @@ POST /teams/{team_id}/contacts/{contact_id}/tags
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "_assigned_tag_id": 1431,
     "_tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -5065,7 +5073,7 @@ Unassign a team assigned tag
 __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team 
-DELETE /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
+DELETE /teams/{team_id}/contacts/{contact_id}/tags/{assigned_tag_id}
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204

@@ -5649,7 +5649,7 @@ GET /teams/{team_id}/goodies/{goodie_id}
     }
 }
 
-Update a goodie
+Update a linked goodie
 
 __Authentication:__ Required
 
@@ -5660,7 +5660,40 @@ __Optional parameters:__
 * name (String) *the name of the goodie*
 * type (String) *the goodie\_type\_*
 * url (string) *the location of the goodie*
-PUT /teams/{team_id}/goodies/{goodie_id}
+PUT /teams/{team_id}/goodies/link/{goodie_id}
+> Content-Type: application/json
+> Authorization: Basic {your encoded token}
+> If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
+{
+    "name": "2014 Product List",
+    "type": "document",
+    "url": "http://some.url/products2014.pdf"
+}
+< 200
+< Content-Type: application/json
+< Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
+{
+    "name": "2014 Product List",
+    "type": "document",
+    "url": "http://some.url/products2014.pdf",
+    "_qr_url": "https://qr.letslynk.com/g/oO68mZwLTvi7bWu5vTgKEQ",
+    "_links": {
+        "self": { "href": "/teams/{team_id}/goodies/{goodie_id}" }
+    }
+}
+
+Update an uploaded goodie
+
+__Authentication:__ Required
+
+__Authorization:__ The user must be an owner or administrator of the team they are requesting
+
+__Optional parameters:__
+
+* name (String) *the name of the goodie*
+* type (String) *the goodie\_type\_*
+* file (file) *the file you wish to upload*
+PUT /teams/{team_id}/goodies/upload/{goodie_id}
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT

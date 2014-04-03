@@ -4430,7 +4430,7 @@ __Authorization:__ The caller must be authorized as a member or admin of the tea
 __Required Parameters:__
 
 * qr\_code (String) _the qr code of another user, obtained by scanning a users qr code_
-* activity\_time (String) [Format: YYYY-MM-DDTHH:MM:SS (ISO 8601)] _the date and time of the connection (specified in UTC)_
+* activity\_time (String) [Format: YYYY-MM-DDTHH:MM:SSZ (RFC3339)] _the date and time of the connection_
 
 POST /teams/{team_id}/contacts
 > Content-Type: application/json

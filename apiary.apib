@@ -5430,11 +5430,20 @@ POST /teams/{team_id}/invites
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "type": "team_join",
     "name": "Jet Lee",
     "email": "jet.lee@kickass.com",
     "level": "member",
     "message": "Hi Jet, I'm exhibiting at the Kick Ass Kung Fu event, join my team so we can work together!",
+    "team_name": "Kung Fu Legends",
+    "team_id": 1,
+    "event_name": "Kick Ass Kung Fu",
+    "event_id": 1,
     "status": "pending",
+    "_inviter": {
+        "type": "account",
+        "name": "Jamie Jones"
+    },
     "_links": {
         "self": { "href": "/teams/{team_id}/invites/{team_invite_id}" }
     }
@@ -5461,21 +5470,39 @@ GET /teams/{team_id}/invites{?start,limit,status*}
 {
     "invites": [
         {
+            "type": "team_join",
             "name": "Jet Lee",
             "email": "jet.lee@kickass.com",
             "level": "member",
             "message": "Hi Jet, I'm exhibiting at the Kick Ass Kung Fu event, join my team so we can work together!",
+            "team_name": "Kung Fu Legends",
+            "team_id": 1,
+            "event_name": "Kick Ass Kung Fu",
+            "event_id": 1,
             "status": "pending",
+            "_inviter": {
+                "type": "account",
+                "name": "Jamie Jones"
+            },
             "_links": {
                 "self": { "href": "/teams/{team_id}/invites/{team_invite_id}" }
             }
         },
         {
+            "type": "team_join",
             "name": "Bruce Willis",
             "email": "bruce.willis@kickass.com",
             "level": "member",
             "message": "Hi Bruce, I'm exhibiting at the Kick Ass Kung Fu event, join my team so we can work together!",
+            "team_name": "Kung Fu Legends",
+            "team_id": 1,
+            "event_name": "Kick Ass Kung Fu",
+            "event_id": 1,
             "status": "pending",
+            "_inviter": {
+                "type": "account",
+                "name": "Jamie Jones"
+            },
             "_links": {
                 "self": { "href": "/teams/{team_id}/invites/{team_invite_id}" }
             }
@@ -5499,11 +5526,20 @@ GET /teams/{team_id}/invites/{team_invite_id}
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "type": "team_join",
     "name": "Jet Lee",
     "email": "jet.lee@kickass.com",
     "level": "member",
     "message": "Hi Jet, I'm exhibiting at the Kick Ass Kung Fu event, join my team so we can work together!",
+    "team_name": "Kung Fu Legends",
+    "team_id": 1,
+    "event_name": "Kick Ass Kung Fu",
+    "event_id": 1,
     "status": "pending",
+    "_inviter": {
+        "type": "account",
+        "name": "Jamie Jones"
+    },
     "_links": {
         "self": { "href": "/teams/{team_id}/invites/{team_invite_id}" }
     }

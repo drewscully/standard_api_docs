@@ -22,6 +22,7 @@ Please see specific examples for further detail.
 
 * `200 OK`- the request was successful
 * `201 Created` - the request was successful and a resource was created
+* `202 Accepted` - the request was succesfull and is being processed
 * `204 No Content` - the request was successful but there is no representation to return
 * `400 Bad Request` - the request could not be understolld or was missing required parameters
 * `401 Unauthorized` - authenication failed or the user doesn't have permissions for the requested operation
@@ -29,6 +30,23 @@ Please see specific examples for further detail.
 * `404 Not Found` - the requested resource could not be found
 * `409 Conflict` - the request could not be actioned as it would result in a conflict with another resource
 * `500 Internal Server Error` - There was an uncaught exception in the api, please email `support@letslynk.com`
+
+### Delayed results
+
+Some methods can take a long time to run. In this case they may return a `202` response code to indicate that 
+you need to check back later for a response. Such a response will typically looks liks this:
+
+GET /expensive_method
+< 202
+< Location: /poll/194819837541
+< Content-Type: application/json
+{
+    "delay": 5
+}
+
+This tells a client to check ``/poll/194819837541`` in 5 seconds. That URL will either return an identical
+202-response if the result is still pending, or the normal result.
+
 
 ### Collections of Objects
 

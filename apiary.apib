@@ -1274,28 +1274,7 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
-PUT /users/{user_id}/push_notification_registration
-> Authorization: Basic {your encoded token}
-> Content-Type: application/json
-{
-    "platform": "ios",
-    "token": "3C6EF372FE95"
-}
-< 200
-< Content-Type: application/json
-
-
---
-User > Push Notification Registration
-
-Push notification registration
---
-
-Creates or updates a push notification registration
-
-__Authentication:__ Required
-
-__Authorization:__ The caller must be authorized as the owner of the user resource 
+__Parameters:__ platform - the client platform, possible options are "ios" and "android"
 
 PUT /users/{user_id}/push_notification_registration
 > Authorization: Basic {your encoded token}
@@ -1304,7 +1283,7 @@ PUT /users/{user_id}/push_notification_registration
     "platform": "ios",
     "token": "3C6EF372FE95"
 }
-< 200
+< 204
 < Content-Type: application/json
 
 

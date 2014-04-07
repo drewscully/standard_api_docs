@@ -131,6 +131,22 @@ POST /auth
         "self": { "href": "/users/{user_id}" }
     }
 }
++++++
+< 400
+< Content-Type: application/json
+{
+    "message": "Invalid credentials"    
+}
++++++
+< 400
+< Content-Type: application/json
+{
+    "message": "No data provided."    
+}
++++++
+< 502
++++++
+< 504
 
 
 -- Auth > Forgot --

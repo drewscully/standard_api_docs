@@ -1,7 +1,7 @@
 HOST: https://api.letslynk.com/
 
---- Lets Lynk API Documentation ---
-
+--- Lets Lynk API Documentation --- 
+---
 ## Introduction
 
 LetsLynk API is based on REST principles, in order to use the api you need a Lets Lynk account. 
@@ -36,14 +36,13 @@ Please see specific examples for further detail.
 Some methods can take a long time to run. In this case they may return a `202` response code to indicate that 
 you need to check back later for a response. Such a response will typically looks liks this:
 
-GET /expensive_method
-< 202
-< Location: /poll/194819837541
-< Content-Type: application/json
-{
-    "delay": 5
-}
-
+    GET /expensive_method
+    < 202
+    < Location: /poll/194819837541
+    < Content-Type: application/json
+    {
+        "delay": 5
+    }
 This tells a client to check ``/poll/194819837541`` in 5 seconds. That URL will either return an identical
 202-response if the result is still pending, or the normal result.
 
@@ -79,9 +78,11 @@ For example: `GET /users/1/contacts?start=20&limit=10&search=John&tag=1&tag=3`
         }
         ...
     }
+---
 
 
--- Status --
+
+-- API Status --
 Get the API service status
 
 GET /status
@@ -92,6 +93,7 @@ GET /status
     "status" : "OK", 
     "version": 1
 }
+
 
 
 -- Auth --

@@ -2563,7 +2563,7 @@ DELETE /users/{user_id}/contacts/{contact_id}/notes/{note_id}
 
 
 -- 
-User > Contact > Tags 
+User > Contact > Assigned Tags 
 
 The following is a section of resources related to contact tags:
 
@@ -2584,7 +2584,7 @@ __URI filters:__
 * start (Integer) *the item number to start from*
 * limit (Integer) *the maximum number of items to return*
 
-GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
+GET /users/{user_id}/contacts/{contact_id}/assigned_tags{?start,limit}
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -2593,6 +2593,7 @@ GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
 {
     "assigned_tags": [
         {
+            "tag_assignment_id": 1131,
             "tag": {
                 "_tag_id": 1001,
                 "name": "Hot Lead",
@@ -2603,10 +2604,11 @@ GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
                 }
             },
             "_links": {
-                "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                "self": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}" }
             }
         },
         {
+            "tag_assignment_id": 1132,
             "tag": {
                 "_tag_id": 1003,
                 "name": "Call Back",
@@ -2617,13 +2619,13 @@ GET /users/{user_id}/contacts/{contact_id}/tags{?start,limit}
                 }
             },
             "_links": {
-                "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                "self": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}" }
             }
         }
     ],
     "_links": {
-        "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags?start=0&limit=10" },
-        "next": { "href": "/users/{user_id}/contacts/{contact_id}/tags?start=10&limit=10" }
+        "self": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags?start=0&limit=10" },
+        "next": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags?start=10&limit=10" }
     }
 }
 
@@ -2634,13 +2636,14 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource
 
-GET /users/{user_id}/contacts/{contact_id}/tags/{tag_id}
+GET /users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "tag_assignment_id": 1131,
     "tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -2651,7 +2654,7 @@ GET /users/{user_id}/contacts/{contact_id}/tags/{tag_id}
         }
     },
     "_links": {
-        "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+        "self": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}" }
     }
 }
 
@@ -2665,7 +2668,7 @@ __Required perameters:__
 
 * tag\_id (integer) *the user\_tag\_id of the user tag you wish to assign*
 
-POST /users/{user_id}/contacts/{contact_id}/tags
+POST /users/{user_id}/contacts/{contact_id}/assigned_tags
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
 {
@@ -2675,6 +2678,7 @@ POST /users/{user_id}/contacts/{contact_id}/tags
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
+    "tag_assignment_id": 1131,
     "tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
@@ -2685,7 +2689,7 @@ POST /users/{user_id}/contacts/{contact_id}/tags
         }
     },
     "_links": {
-        "self": { "href": "/users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+        "self": { "href": "/users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}" }
     }
 }
 
@@ -2695,7 +2699,7 @@ __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as the owner of the user resource 
 
-DELETE /users/{user_id}/contacts/{contact_id}/tags/{assigned_tag_id}
+DELETE /users/{user_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204
@@ -4996,7 +5000,7 @@ DELETE /teams/{team_id}/contacts/{contact_id}/notes/{note_id}
 
 
 -- 
-Team > Contact > Tags 
+Team > Contact > Assigned Tags 
 
 The following is a section of resources related to contact tags:
 
@@ -5017,7 +5021,7 @@ __URI filters:__
 
 * start (Integer) *the item number to start from*
 * limit (Integer) *the maximum number of items to return*
-GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
+GET /teams/{team_id}/contacts/{contact_id}/assigned_tags{?start,limit}
 > Authorization: Basic {your encoded token}
 > If-Modified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5026,6 +5030,7 @@ GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
 {
     "assigned tags": [
          {
+             "tag_assignment_id": 1131,
              "tag": {
                  "_tag_id": 1001,
                 "name": "Hot Lead",
@@ -5036,10 +5041,11 @@ GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
                 }
             },
             "_links": {
-                "self": { "href": "/teams/{team_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                "self": { "href": "/teams/{team_id}/contacts/{contact_id}/assigned_tags/{assigned_tag_id}" }
             }
         },
         {
+            "tag_assignment_id": 1132,
             "tag": {
                 "_tag_id": 1003,
                 "name": "Call Back",
@@ -5050,13 +5056,13 @@ GET /teams/{team_id}/contacts/{contact_id}/tags{?start,limit}
                 }
             },
             "_links": {
-                 "self": { "href": "/teams/{team_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+                 "self": { "href": "/teams/{team_id}/contacts/{contact_id}/assigned_tags/{assigned_tag_id}" }
             }
         }
     ],
     "_links": {
-        "self": { "href": "/teams/{team_id}/contacts/{contact_id}/tags?start=0&limit=10" },
-        "next": { "href": "/teams/{team_id}/contacts/{contact_id}/tags?start=10&limit=10" }
+        "self": { "href": "/teams/{team_id}/contacts/{contact_id}/assigned_tags?start=0&limit=10" },
+        "next": { "href": "/teams/{team_id}/contacts/{contact_id}/assigned_tags?start=10&limit=10" }
     }
 }
 
@@ -5066,7 +5072,7 @@ Get an individual assigned tag
 __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team
-GET /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
+GET /teams/{team_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 200
@@ -5074,6 +5080,7 @@ GET /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
     "_tag": {
+        "tag_assignment_id": 1131,
         "_tag_id": 1001,
         "name": "Hot Lead",
         "colour": "F47831",
@@ -5096,7 +5103,7 @@ __Authorization:__ The caller must be authorized as a member or admin of the tea
 __Required perameters:__
 
 * tag\_id (integer) *the user\_tag\_id of the user tag you wish to assign*
-POST /teams/{team_id}/contacts/{contact_id}/tags
+POST /teams/{team_id}/contacts/{contact_id}/assigned_tags
 > Content-Type: application/json
 > Authorization: Basic {your encoded token}
 {
@@ -5106,7 +5113,8 @@ POST /teams/{team_id}/contacts/{contact_id}/tags
 < Content-Type: application/json
 < Last-Modified: Tue, 15 Nov 2013 12:45:26 GMT
 {
-    "_tag": {
+    "tag_assignment_id": 1131,
+    "tag": {
         "_tag_id": 1001,
         "name": "Hot Lead",
         "colour": "F47831",
@@ -5116,7 +5124,7 @@ POST /teams/{team_id}/contacts/{contact_id}/tags
         }
     },
     "_links": {
-        "self": { "href": "/teams/{team_id}/contacts/{contact_id}/tags/{assigned_tag_id}" }
+        "self": { "href": "/teams/{team_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}" }
     }
 }
 
@@ -5125,7 +5133,7 @@ Unassign a team assigned tag
 __Authentication:__ Required
 
 __Authorization:__ The caller must be authorized as a member or admin of the team 
-DELETE /teams/{team_id}/contacts/{contact_id}/tags/{tag_id}
+DELETE /teams/{team_id}/contacts/{contact_id}/assigned_tags/{tag_assignment_id}
 > Authorization: Basic {your encoded token}
 > If-Unmodified-Since: Fri, 12 Nov 2013 12:45:26 GMT
 < 204

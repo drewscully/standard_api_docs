@@ -1296,7 +1296,7 @@ User > Push Notification Registration
 Push notification registration
 --
 
-Creates or updates a push notification registration
+Creates push notification registration
 
 __Authentication:__ Required
 
@@ -1304,15 +1304,29 @@ __Authorization:__ The caller must be authorized as the owner of the user resour
 
 __Parameters:__ platform - the client platform, possible options are "ios" and "android"
 
-PUT /users/{user_id}/push_notification_registration
+POST /users/{user_id}/push_notification_registration
 > Authorization: Basic {your encoded token}
 > Content-Type: application/json
 {
     "platform": "ios",
     "token": "3C6EF372FE95"
 }
-< 204
+< 201
 < Content-Type: application/json
+{
+    "push_notification_registration_id": 1
+}
+
+
+Deletes push notification registration
+
+__Authentication:__ Required
+
+__Authorization:__ The caller must be authorized as the owner of the user resource 
+
+DELETE /users/{user_id}/push_notification_registration/{push_notification_id}
+> Authorization: Basic {your encoded token}
+< 204
 
 
 --
